@@ -1,10 +1,4 @@
-def read_input_file() -> list[str]:
-    """Read the lines of the input file and remove newlines.
-
-    :return: A list containing the lines of the file as the elements.
-    """
-    with open('input.txt', 'r') as f:
-        return [ele.strip() for ele in f.readlines()]
+import utils
 
 
 def individual_elves() -> dict[int: int]:
@@ -17,7 +11,7 @@ def individual_elves() -> dict[int: int]:
     elf_dict = {}
     current_elf = []
 
-    for item in read_input_file():
+    for item in utils.read_input_file():
 
         # append item to list if item is not a blank string
         if item != '':

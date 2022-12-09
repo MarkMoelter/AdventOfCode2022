@@ -1,3 +1,6 @@
+import utils
+
+
 class Opponent:
     ROCK = 'A'
     PAPER = 'B'
@@ -53,7 +56,9 @@ def total_score():
 
 def main():
     # part 1
-    pass
+    list = utils.read_input_file()
+
+    # part 2
 
 
 if __name__ == '__main__':
