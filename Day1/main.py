@@ -8,17 +8,22 @@ def read_input_file() -> list[str]:
 
 
 def individual_elves() -> dict[int: list[int]]:
-    """Return a dict of lists that represent individual elves."""
-    # iterate through the input list to separate elves at blank elements.
+    """
+    Separate the list of input elements into individual elves at the blank lines.
+
+    :return: A dictionary that represents individual elves.
+    """
     elf_id = 0
     elf_dict = {}
-
     current_elf = []
+
     for item in read_input_file():
 
+        # append item to list if item is not a blank string
         if item != '':
             current_elf.append(int(item))
 
+        # copy current elf list into dict, increase the key count and clear the current list
         else:
             elf_dict[elf_id] = current_elf.copy()
             elf_id += 1
