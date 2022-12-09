@@ -55,8 +55,25 @@ def elf_with_most_calories() -> tuple[int, int]:
     return elf_id, most_calories
 
 
+def top_elves(top_number: int) -> list[int]:
+    """
+    Calculate the top three elves holding the most calories.
+
+    :return: A list containing 3 values that represent the 3 elves with the largest amount.
+    """
+    sorted_dict = sorted(individual_elves().values(), reverse=True)
+
+    return [sorted_dict[i] for i in range(top_number)]
+
+
 def main():
-    print(elf_with_most_calories())
+    # part 1
+    print(elf_with_most_calories()[1])
+    # or
+    print(*top_elves(1))
+
+    # part 2
+    print(sum(top_elves(3)))
 
 
 if __name__ == '__main__':
