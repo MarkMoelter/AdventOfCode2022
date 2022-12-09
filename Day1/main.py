@@ -7,13 +7,13 @@ def read_input_file() -> list[str]:
         return [ele.strip() for ele in f.readlines()]
 
 
-def individual_elves() -> dict[int: list[int]]:
+def individual_elves() -> dict[int: int]:
     """
     Separate the list of input elements into individual elves at the blank lines.
 
     :return: A dictionary that represents individual elves.
     """
-    elf_id = 0
+    elf_id = 1
     elf_dict = {}
     current_elf = []
 
@@ -25,15 +25,38 @@ def individual_elves() -> dict[int: list[int]]:
 
         # copy current elf list into dict, increase the key count and clear the current list
         else:
-            elf_dict[elf_id] = current_elf.copy()
+            elf_dict[elf_id] = sum(current_elf)
             elf_id += 1
             current_elf.clear()
 
     return elf_dict
 
 
+def elf_with_most_calories() -> tuple[int, int]:
+    """
+    Finds the elf with the most calories on his/her person.
+
+    :return: The elf's id and his/her total number of calories.
+    """
+    elf_id = None
+    most_calories = None
+
+    for key, calorie_count in individual_elves().items():
+
+        # initialize the id and calorie amount
+        if elf_id is None:
+            elf_id = key
+            most_calories = calorie_count
+
+        if most_calories < calorie_count:
+            elf_id = key
+            most_calories = calorie_count
+
+    return elf_id, most_calories
+
+
 def main():
-    print(len(individual_elves()))
+    print(elf_with_most_calories())
 
 
 if __name__ == '__main__':
