@@ -7,8 +7,28 @@ def read_input_file() -> list[str]:
         return [ele.strip() for ele in f.readlines()]
 
 
+def individual_elves() -> dict[int: list[int]]:
+    """Return a dict of lists that represent individual elves."""
+    # iterate through the input list to separate elves at blank elements.
+    elf_id = 0
+    elf_dict = {}
+
+    current_elf = []
+    for item in read_input_file():
+
+        if item != '':
+            current_elf.append(int(item))
+
+        else:
+            elf_dict[elf_id] = current_elf.copy()
+            elf_id += 1
+            current_elf.clear()
+
+    return elf_dict
+
+
 def main():
-    pass
+    print(len(individual_elves()))
 
 
 if __name__ == '__main__':
