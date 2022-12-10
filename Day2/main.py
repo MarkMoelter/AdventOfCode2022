@@ -18,21 +18,17 @@ class Solution:
         self.games = games
 
     def input_score(self) -> int:
-        rock = 1
-        paper = 2
-        scissors = 3
+        score = 0
 
-        result = 0
+        for opponent, player in self.games:
+            if player == Player.ROCK:
+                score += 1
+            elif player == Player.PAPER:
+                score += 2
+            elif player == Player.SCISSORS:
+                score += 3
 
-        for game in self.games:
-            if game[1] == Player.ROCK:
-                result += rock
-            elif game[1] == Player.PAPER:
-                result += paper
-            elif game[1] == Player.SCISSORS:
-                result += scissors
-
-        return result
+        return score
 
     def outcome_score(self) -> int:
         score = 0
@@ -43,7 +39,7 @@ class Solution:
                 score += 6
             elif game_result == 'D':
                 score += 3
-            else:
+            elif game_result == 'L':
                 score += 0
 
         return score
@@ -92,8 +88,9 @@ def rps_logic(opponent, player) -> str:
 
 
 def main():
+    games = separate_games()
     # part 1
-    print(Solution(separate_games()).total_score())
+    print(Solution(games).total_score())
 
     # part 2
 
