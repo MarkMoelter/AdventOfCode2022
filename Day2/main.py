@@ -13,50 +13,81 @@ class Player:
     SCISSORS = 'Z'
 
 
-def rps_logic(win_score=6, draw_score=3, loss_score=0) -> int:
-    """
-    Logic for rock, paper, scissors game.
+class Solution:
+    def __init__(self, games: list[tuple[str, str]]):
+        self.games = games
 
-    :return: The score representing the outcome of the game.
-    """
-    # win
-    rock_paper = Opponent.ROCK and Player.PAPER
-    scissor_rock = Opponent.SCISSORS and Player.ROCK
-    paper_scissors = Opponent.PAPER and Player.SCISSORS
+    @staticmethod
+    def rps_logic(opponent, player) -> int:
+        """
+        Logic for rock, paper, scissors game.
 
-    # draw
-    both_rock = Opponent.ROCK and Player.ROCK
-    both_paper = Opponent.PAPER and Player.PAPER
-    both_scissors = Opponent.SCISSORS and Player.SCISSORS
+        :return: The score representing the outcome of the game.
+        """
+        # win
+        rock_paper = opponent == Opponent.ROCK and player == Player.PAPER
+        scissor_rock = opponent == Opponent.SCISSORS and player == Player.ROCK
+        paper_scissors = opponent == Opponent.PAPER and player == Player.SCISSORS
 
-    # win
-    if rock_paper or scissor_rock or paper_scissors:
-        return win_score
+        # draw
+        both_rock = opponent == Opponent.ROCK and player == Player.ROCK
+        both_paper = opponent == Opponent.PAPER and player == Player.PAPER
+        both_scissors = opponent == Opponent.SCISSORS and player == Player.SCISSORS
 
-    # draw
-    elif both_rock or both_paper or both_scissors:
-        return draw_score
+        # win
+        if rock_paper or scissor_rock or paper_scissors:
+            return 6
 
-    # loss
-    else:
-        return loss_score
+        # draw
+        elif both_rock or both_paper or both_scissors:
+            return 3
+
+        # loss
+        else:
+            return 0
+
+    def input_score(self) -> int:
+        rock = 1
+        paper = 2
+        scissors = 3
+
+        result = 0
+
+        for game in self.games:
+            if game[1] == Player.ROCK:
+                result += rock
+            elif game[1] == Player.PAPER:
+                result += paper
+            elif game[1] == Player.SCISSORS:
+                result += scissors
+
+        return result
+
+    def outcome_score(self) -> int:
+        result = 0
+
+        for opponent, player in self.games:
+            result += self.rps_logic(opponent, player)
+
+        return result
+
+    def total_score(self) -> int:
+        return self.input_score() + self.outcome_score()
 
 
-def input_score():
-    pass
+def separate_games() -> list[tuple[str, str]]:
+    games = []
 
+    for line in utils.read_input_file():
+        opponent_input, player_input = line.split(' ')
+        games.append((opponent_input, player_input))
 
-def outcome_score():
-    pass
-
-
-def total_score():
-    pass
+    return games
 
 
 def main():
     # part 1
-    list = utils.read_input_file()
+    print(Solution(separate_games()).total_score())
 
     # part 2
 
