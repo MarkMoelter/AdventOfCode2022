@@ -1,6 +1,6 @@
 import unittest
 
-from main import Opponent, Player, Solution
+from main import Opponent, Player, Solution, rps_logic
 
 
 class TestOpponent(unittest.TestCase):
@@ -25,7 +25,7 @@ class TestPlayer(unittest.TestCase):
         self.assertEqual(Player.SCISSORS, 'Z')
 
 
-class TestSolution(unittest.TestCase):
+class TestSolutionLogic(unittest.TestCase):
     def setUp(self) -> None:
         self.draws = [
             ('A', 'X'), ('B', 'Y'), ('C', 'Z')
@@ -41,15 +41,15 @@ class TestSolution(unittest.TestCase):
 
     def test_win_logic(self):
         for opponent, player in self.wins:
-            self.assertEqual(Solution(self.wins).rps_logic(opponent, player), 6)
+            self.assertEqual(rps_logic(opponent, player), 'W')
 
     def test_draw_logic(self):
         for opponent, player in self.draws:
-            self.assertEqual(Solution(self.wins).rps_logic(opponent, player), 3)
+            self.assertEqual(rps_logic(opponent, player), 'D')
 
     def test_loss_logic(self):
         for opponent, player in self.losses:
-            self.assertEqual(Solution(self.wins).rps_logic(opponent, player), 0)
+            self.assertEqual(rps_logic(opponent, player), 'L')
 
 
 if __name__ == '__main__':

@@ -17,35 +17,6 @@ class Solution:
     def __init__(self, games: list[tuple[str, str]]):
         self.games = games
 
-    @staticmethod
-    def rps_logic(opponent, player) -> int:
-        """
-        Logic for rock, paper, scissors game.
-
-        :return: The score representing the outcome of the game.
-        """
-        # win
-        rock_paper = opponent == Opponent.ROCK and player == Player.PAPER
-        scissor_rock = opponent == Opponent.SCISSORS and player == Player.ROCK
-        paper_scissors = opponent == Opponent.PAPER and player == Player.SCISSORS
-
-        # draw
-        both_rock = opponent == Opponent.ROCK and player == Player.ROCK
-        both_paper = opponent == Opponent.PAPER and player == Player.PAPER
-        both_scissors = opponent == Opponent.SCISSORS and player == Player.SCISSORS
-
-        # win
-        if rock_paper or scissor_rock or paper_scissors:
-            return 6
-
-        # draw
-        elif both_rock or both_paper or both_scissors:
-            return 3
-
-        # loss
-        else:
-            return 0
-
     def input_score(self) -> int:
         rock = 1
         paper = 2
@@ -64,12 +35,18 @@ class Solution:
         return result
 
     def outcome_score(self) -> int:
-        result = 0
+        score = 0
 
         for opponent, player in self.games:
-            result += self.rps_logic(opponent, player)
+            game_result = rps_logic(opponent, player)
+            if game_result == 'W':
+                score += 6
+            elif game_result == 'D':
+                score += 3
+            else:
+                score += 0
 
-        return result
+        return score
 
     def total_score(self) -> int:
         return self.input_score() + self.outcome_score()
@@ -83,6 +60,35 @@ def separate_games() -> list[tuple[str, str]]:
         games.append((opponent_input, player_input))
 
     return games
+
+
+def rps_logic(opponent, player) -> str:
+    """
+    Logic for rock, paper, scissors game.
+
+    :return: A string representation of the outcome of the game.
+    """
+    # win
+    rock_paper = opponent == Opponent.ROCK and player == Player.PAPER
+    scissor_rock = opponent == Opponent.SCISSORS and player == Player.ROCK
+    paper_scissors = opponent == Opponent.PAPER and player == Player.SCISSORS
+
+    # draw
+    both_rock = opponent == Opponent.ROCK and player == Player.ROCK
+    both_paper = opponent == Opponent.PAPER and player == Player.PAPER
+    both_scissors = opponent == Opponent.SCISSORS and player == Player.SCISSORS
+
+    # win
+    if rock_paper or scissor_rock or paper_scissors:
+        return 'W'
+
+    # draw
+    elif both_rock or both_paper or both_scissors:
+        return 'D'
+
+    # loss
+    else:
+        return 'L'
 
 
 def main():
