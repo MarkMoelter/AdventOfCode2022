@@ -13,7 +13,7 @@ class Player:
     SCISSORS = 'Z'
 
 
-class Solution:
+class Part1:
     def __init__(self, games: list[tuple[str, str]]):
         self.games = games
 
@@ -46,6 +46,60 @@ class Solution:
 
     def total_score(self) -> int:
         return self.input_score() + self.outcome_score()
+
+
+class NeededOutcome:
+    WIN = 'Z'
+    DRAW = 'Y'
+    LOSE = 'X'
+
+
+class Part2(Part1):
+    def __init__(self, games):
+        super().__init__(games)
+        self.games = games
+
+    def needed_sign(self) -> str:
+        """
+        Determine which sign needs to be played
+         using the opponent's sign and the desired outcome.
+
+        :return: A string representation of rock, paper, or scissors.
+        """
+
+        draw_dict = {
+            Opponent.ROCK: 'rock',
+            Opponent.PAPER: 'paper',
+            Opponent.SCISSORS: 'scissors',
+        }
+
+        win_dict = {
+            Opponent.ROCK: 'paper',
+            Opponent.PAPER: 'scissors',
+            Opponent.SCISSORS: 'rock',
+        }
+
+        lose_dict = {
+            Opponent.ROCK: 'scissors',
+            Opponent.PAPER: 'rock',
+            Opponent.SCISSORS: 'paper',
+        }
+
+        for opponent, outcome in self.games:
+            # draws
+            if NeededOutcome.DRAW == outcome:
+                return draw_dict[opponent]
+
+            elif NeededOutcome.WIN == outcome:
+                return win_dict[opponent]
+
+            elif NeededOutcome.LOSE == outcome:
+                return lose_dict[opponent]
+
+            raise ValueError(f'Game outcome: {outcome} or opponent input: {opponent} not valid')
+
+    def outcome_score(self) -> int:
+        pass
 
 
 def separate_games() -> list[tuple[str, str]]:
@@ -90,9 +144,10 @@ def rps_logic(opponent, player) -> str:
 def main():
     games = separate_games()
     # part 1
-    print(Solution(games).total_score())
+    print(Part1(games).total_score())
 
     # part 2
+    print(Part2(games).total_score())
 
 
 if __name__ == '__main__':
