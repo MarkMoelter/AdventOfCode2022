@@ -1,6 +1,6 @@
 import unittest
 
-from Day2.part1 import Part1
+from Day2.part1 import Part1, Outcome
 
 
 class TestGameLogic(unittest.TestCase):
@@ -21,17 +21,33 @@ class TestGameLogic(unittest.TestCase):
         self.part1_draw = Part1(self.draws)
         self.part1_loss = Part1(self.losses)
 
+    def test_returns_outcome_enum(self):
+        for opponent, player in self.draws:
+            self.assertEqual(
+                type(self.part1_draw.game_logic(opponent, player)),
+                Outcome
+            )
+
     def test_win_logic(self):
         for opponent, player in self.wins:
-            self.assertEqual(self.part1_win.game_logic(opponent, player), 'W')
+            self.assertEqual(
+                self.part1_win.game_logic(opponent, player),
+                Outcome.WIN
+            )
 
     def test_draw_logic(self):
         for opponent, player in self.draws:
-            self.assertEqual(self.part1_draw.game_logic(opponent, player), 'D')
+            self.assertEqual(
+                self.part1_draw.game_logic(opponent, player),
+                Outcome.DRAW
+            )
 
     def test_loss_logic(self):
         for opponent, player in self.losses:
-            self.assertEqual(self.part1_loss.game_logic(opponent, player), 'L')
+            self.assertEqual(
+                self.part1_loss.game_logic(opponent, player),
+                Outcome.LOSS
+            )
 
 
 class TestInputScore(unittest.TestCase):
