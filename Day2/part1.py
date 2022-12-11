@@ -1,6 +1,14 @@
+from enum import Enum, auto
+
 import utils
 from Day2.opponent import Opponent
 from Day2.player import Player
+
+
+class Outcome(Enum):
+    WIN = auto()
+    DRAW = auto()
+    LOSS = auto()
 
 
 class Part1:
@@ -8,33 +16,33 @@ class Part1:
         self.games = games
 
     @staticmethod
-    def game_logic(opponent, player) -> str:
+    def game_logic(opponent, player) -> Outcome:
         """
         Logic for rock, paper, scissors game.
 
-        :return: A string representation of the outcome of the game.
+        :return: An Outcome enum of the outcome of the game.
         """
-        # win
-        rock_paper = opponent == Opponent.ROCK and player == Player.PAPER
-        scissor_rock = opponent == Opponent.SCISSORS and player == Player.ROCK
-        paper_scissors = opponent == Opponent.PAPER and player == Player.SCISSORS
+        outcome_dict = {
+            Opponent.ROCK: {
+                Player.ROCK: Outcome.DRAW,
+                Player.PAPER: Outcome.WIN,
+                Player.SCISSORS: Outcome.LOSS
+            },
 
-        # draw
-        both_rock = opponent == Opponent.ROCK and player == Player.ROCK
-        both_paper = opponent == Opponent.PAPER and player == Player.PAPER
-        both_scissors = opponent == Opponent.SCISSORS and player == Player.SCISSORS
+            Opponent.PAPER: {
+                Player.ROCK: Outcome.LOSS,
+                Player.PAPER: Outcome.DRAW,
+                Player.SCISSORS: Outcome.WIN
+            },
 
-        # win
-        if rock_paper or scissor_rock or paper_scissors:
-            return 'W'
+            Opponent.SCISSORS: {
+                Player.ROCK: Outcome.WIN,
+                Player.PAPER: Outcome.LOSS,
+                Player.SCISSORS: Outcome.DRAW
+            }
+        }
 
-        # draw
-        elif both_rock or both_paper or both_scissors:
-            return 'D'
-
-        # loss
-        else:
-            return 'L'
+        return outcome_dict[opponent][player]
 
     def input_score(self) -> int:
         score = 0
@@ -54,11 +62,11 @@ class Part1:
 
         for opponent, player in self.games:
             game_result = self.game_logic(opponent, player)
-            if game_result == 'W':
+            if game_result == Outcome.WIN:
                 score += 6
-            elif game_result == 'D':
+            elif game_result == Outcome.DRAW:
                 score += 3
-            elif game_result == 'L':
+            elif game_result == Outcome.LOSS:
                 score += 0
 
         return score
