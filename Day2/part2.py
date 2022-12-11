@@ -16,36 +16,28 @@ class Part2(Part1):
 
         :return: A string representation of rock, paper, or scissors.
         """
+        outcome_dict ={
+            NeededOutcome.WIN: {
+                Opponent.ROCK: 'paper',
+                Opponent.PAPER: 'scissors',
+                Opponent.SCISSORS: 'rock',
+            },
 
-        draw_dict = {
-            Opponent.ROCK: 'rock',
-            Opponent.PAPER: 'paper',
-            Opponent.SCISSORS: 'scissors',
+            NeededOutcome.DRAW: {
+                Opponent.ROCK: 'rock',
+                Opponent.PAPER: 'paper',
+                Opponent.SCISSORS: 'scissors'
+            },
+
+            NeededOutcome.LOSE: {
+                Opponent.ROCK: 'scissors',
+                Opponent.PAPER: 'rock',
+                Opponent.SCISSORS: 'paper'
+            }
         }
 
-        win_dict = {
-            Opponent.ROCK: 'paper',
-            Opponent.PAPER: 'scissors',
-            Opponent.SCISSORS: 'rock',
-        }
+        return outcome_dict[outcome][opponent]
 
-        lose_dict = {
-            Opponent.ROCK: 'scissors',
-            Opponent.PAPER: 'rock',
-            Opponent.SCISSORS: 'paper',
-        }
-
-        # draws
-        if NeededOutcome.DRAW == outcome:
-            return draw_dict[opponent]
-
-        elif NeededOutcome.WIN == outcome:
-            return win_dict[opponent]
-
-        elif NeededOutcome.LOSE == outcome:
-            return lose_dict[opponent]
-        else:
-            raise ValueError(f'Game outcome: {outcome} or opponent input: {opponent} not valid')
 
     def outcome_score(self) -> int:
         """
