@@ -54,6 +54,40 @@ class Part2(Part1):
 
         :return: The score of the outcomes as an integer.
         """
+        score = 0
+
+        outcome_score = {
+            NeededOutcome.WIN: 6,
+            NeededOutcome.DRAW: 3,
+            NeededOutcome.LOSE: 0,
+        }
+
+        for opponent, outcome in self.games:
+            score += outcome_score[outcome]
+
+        return score
+
+    def input_score(self) -> int:
+        """
+        Calculate the score given the opponents input
+        and the desired outcome.
+
+        :return: The score of the inputs.
+        """
+
+        input_score = {
+            'rock': 1,
+            'paper': 2,
+            'scissors': 3
+        }
+
+        score = 0
+
+        for opponent, outcome in self.games:
+            player_sign = self.needed_sign(opponent, outcome)
+            score += input_score[player_sign]
+
+        return score
 
 
 def main():

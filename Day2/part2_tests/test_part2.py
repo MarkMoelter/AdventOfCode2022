@@ -21,5 +21,108 @@ class TestNeededSign(unittest.TestCase):
         self.assertEqual(Part2(scissors_needed).needed_sign(*scissors_needed[0]), 'scissors')
 
 
+class TestOutcomeScore(unittest.TestCase):
+    def setUp(self) -> None:
+        self.losses = [
+            (Opponent.ROCK, NeededOutcome.LOSE),
+            (Opponent.PAPER, NeededOutcome.LOSE),
+            (Opponent.SCISSORS, NeededOutcome.LOSE),
+        ]
+
+        self.draws = [
+            (Opponent.ROCK, NeededOutcome.DRAW),
+            (Opponent.PAPER, NeededOutcome.DRAW),
+            (Opponent.SCISSORS, NeededOutcome.DRAW),
+        ]
+
+        self.wins = [
+            (Opponent.ROCK, NeededOutcome.WIN),
+            (Opponent.PAPER, NeededOutcome.WIN),
+            (Opponent.SCISSORS, NeededOutcome.WIN),
+        ]
+
+        self.part2_win = Part2(self.wins)
+        self.part2_draw = Part2(self.draws)
+        self.part2_loss = Part2(self.losses)
+
+    def test_returns_int(self):
+        self.assertEqual(
+            type(self.part2_win.outcome_score()),
+            int
+        )
+
+    def test_returns_zero_for_losses(self):
+        self.assertEqual(
+            self.part2_loss.outcome_score() / len(self.losses),
+            0
+        )
+
+    def test_returns_three_for_draws(self):
+        self.assertEqual(
+            self.part2_draw.outcome_score() / len(self.draws),
+            3
+        )
+
+    def test_returns_six_for_wins(self):
+        self.assertEqual(
+            self.part2_win.outcome_score() / len(self.wins),
+            6
+        )
+
+
+class TestInputScore(unittest.TestCase):
+    def setUp(self) -> None:
+        self.losses = [
+            (Opponent.ROCK, NeededOutcome.LOSE),
+            (Opponent.PAPER, NeededOutcome.LOSE),
+            (Opponent.SCISSORS, NeededOutcome.LOSE),
+        ]
+
+        self.draws = [
+            (Opponent.ROCK, NeededOutcome.DRAW),
+            (Opponent.PAPER, NeededOutcome.DRAW),
+            (Opponent.SCISSORS, NeededOutcome.DRAW),
+        ]
+
+        self.wins = [
+            (Opponent.ROCK, NeededOutcome.WIN),
+            (Opponent.PAPER, NeededOutcome.WIN),
+            (Opponent.SCISSORS, NeededOutcome.WIN),
+        ]
+
+        self.part2_win = Part2(self.wins)
+        self.part2_draw = Part2(self.draws)
+        self.part2_loss = Part2(self.losses)
+
+    def test_returns_int(self):
+        self.assertEqual(
+            type(self.part2_win.input_score()),
+            int
+        )
+
+    def test_returns_six_for_one_of_each(self):
+        self.assertEqual(
+            self.part2_draw.input_score(),
+            6
+        )
+
+    def test_returns_one_for_rock(self):
+        self.assertEqual(
+            Part2([(Opponent.ROCK, NeededOutcome.DRAW)]).input_score(),
+            1
+        )
+
+    def test_returns_two_for_paper(self):
+        self.assertEqual(
+            Part2([(Opponent.PAPER, NeededOutcome.DRAW)]).input_score(),
+            2
+        )
+
+    def test_returns_three_for_scissors(self):
+        self.assertEqual(
+            Part2([(Opponent.SCISSORS, NeededOutcome.DRAW)]).input_score(),
+            3
+        )
+
 if __name__ == '__main__':
     unittest.main()
