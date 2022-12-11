@@ -17,21 +17,21 @@ class TestGameLogic(unittest.TestCase):
             ('A', 'Y'), ('B', 'Z'), ('C', 'X')
         ]
 
-        self.sol_win = Part1(self.wins)
-        self.sol_draw = Part1(self.draws)
-        self.sol_loss = Part1(self.losses)
+        self.part1_win = Part1(self.wins)
+        self.part1_draw = Part1(self.draws)
+        self.part1_loss = Part1(self.losses)
 
     def test_win_logic(self):
         for opponent, player in self.wins:
-            self.assertEqual(self.sol_win.game_logic(opponent, player), 'W')
+            self.assertEqual(self.part1_win.game_logic(opponent, player), 'W')
 
     def test_draw_logic(self):
         for opponent, player in self.draws:
-            self.assertEqual(self.sol_draw.game_logic(opponent, player), 'D')
+            self.assertEqual(self.part1_draw.game_logic(opponent, player), 'D')
 
     def test_loss_logic(self):
         for opponent, player in self.losses:
-            self.assertEqual(self.sol_loss.game_logic(opponent, player), 'L')
+            self.assertEqual(self.part1_loss.game_logic(opponent, player), 'L')
 
 
 class TestInputScore(unittest.TestCase):
