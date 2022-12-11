@@ -48,7 +48,12 @@ class Part2(Part1):
             raise ValueError(f'Game outcome: {outcome} or opponent input: {opponent} not valid')
 
     def outcome_score(self) -> int:
-        pass
+        """
+        Calculate the outcome score
+         using the second argument in each tuple of the input text.
+
+        :return: The score of the outcomes as an integer.
+        """
 
 
 def main():
