@@ -38,11 +38,18 @@ class TestSplitRucksack(unittest.TestCase):
         )
 
 class TestCheckPockets(unittest.TestCase):
-    def test_return_string(self):
+    def test_return_list(self):
         self.assertEqual(
             type(Part1().check_pockets('', '')),
-            str
+            list
         )
+
+    def test_values_in_list_return_string(self):
+        for ele in Part1().check_pockets('', ''):
+            self.assertEqual(
+                type(ele),
+                str
+            )
 
     def test_raise_value_error_when_not_same_length(self):
         self.assertRaises(
