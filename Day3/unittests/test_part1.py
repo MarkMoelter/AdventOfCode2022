@@ -1,5 +1,4 @@
 import unittest
-from unittest import TestCase
 
 from Day3.part1 import Part1
 
@@ -37,11 +36,12 @@ class TestSplitRucksack(unittest.TestCase):
             len(pocket_2)
         )
 
+
 class TestCheckPockets(unittest.TestCase):
     def test_return_list(self):
         self.assertEqual(
             type(Part1().check_pockets('', '')),
-            list
+            set
         )
 
     def test_values_in_list_return_string(self):
@@ -55,6 +55,24 @@ class TestCheckPockets(unittest.TestCase):
         self.assertRaises(
             ValueError,
             Part1().check_pockets,
-            pocket_1 = 'fo',
-            pocket_2 = 'bar'
+            pocket_1='fo',
+            pocket_2='bar'
         )
+
+    def test_return_A(self):
+        self.assertEqual(
+            Part1().check_pockets('AB', 'CA'),
+            {'A'}
+        )
+
+    def test_return_A_and_B(self):
+        self.assertEqual(
+            Part1().check_pockets('ABC', 'GBA'),
+            {'A', 'B'}
+        )
+        self.assertEqual(
+            Part1().check_pockets('ABC', 'GBA'),
+            {'B', 'A'}
+        )
+
+    # def test_return_correct_order

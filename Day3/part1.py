@@ -1,5 +1,5 @@
 class Part1:
-    def __init__(self, rucksack_list:list[str] = None):
+    def __init__(self, rucksack_list: list[str] = None):
         self.rucksack_list = rucksack_list
 
     def split_rucksack(self) -> list[tuple[str, str]]:
@@ -24,14 +24,21 @@ class Part1:
         return rucksack_pockets
 
     @staticmethod
-    def check_pockets(pocket_1, pocket_2) -> list[str]:
+    def check_pockets(pocket_1, pocket_2) -> set[str]:
         """
         Check pockets for duplicate items.
         Should return one item for this problem.
 
         :return: Duplicate item in both pockets.
         """
+        # make sure pockets are the same length
         if len(pocket_1) != len(pocket_2):
             raise ValueError('Pockets must have the same length.')
 
-        return ['']
+        duplicates = set()
+
+        for char in pocket_1:
+            if char in pocket_2:
+                duplicates.add(char)
+
+        return duplicates
