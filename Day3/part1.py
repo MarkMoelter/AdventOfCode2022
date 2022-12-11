@@ -15,10 +15,22 @@ class Part1:
             pocket_len = len(rucksack) // 2
 
             # use string splicing to split the rucksack
-            pocket1 = rucksack[:pocket_len]
-            pocket2 = rucksack[pocket_len:]
+            pocket_1 = rucksack[:pocket_len]
+            pocket_2 = rucksack[pocket_len:]
 
             # append to the list
-            rucksack_pockets.append((pocket1, pocket2))
+            rucksack_pockets.append((pocket_1, pocket_2))
 
         return rucksack_pockets
+
+    @staticmethod
+    def check_pockets(pocket_1, pocket_2):
+        """
+        Check both pockets for the duplicate item in each.
+
+        :return: Duplicate item in both pockets.
+        """
+        if len(pocket_1) != len(pocket_2):
+            raise ValueError('Pockets must have the same length.')
+
+        return ''
