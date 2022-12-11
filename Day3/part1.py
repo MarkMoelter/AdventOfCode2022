@@ -31,6 +31,7 @@ class Part1:
 
         :return: Duplicate item in both pockets.
         """
+
         # make sure pockets are the same length
         if len(pocket_1) != len(pocket_2):
             raise ValueError('Pockets must have the same length.')
@@ -42,3 +43,60 @@ class Part1:
                 duplicates.add(char)
 
         return duplicates
+
+    @staticmethod
+    def priority_map() -> dict:
+        """
+        Create a dictionary to map alphabetical characters to a priority value.
+
+        :return: A dictionary that maps a-z: 1-26 and A-Z: 27-52
+        """
+        priority = {}
+
+        # lowercase characters
+        unicode_a = 97
+        unicode_z = 122
+        lowercase_start_value = 1
+        for i in range(unicode_a, unicode_z + 1):
+            priority[chr(i)] = lowercase_start_value
+            lowercase_start_value += 1
+
+        # uppercase characters
+        unicode_A = 65
+        unicode_Z = 90
+        uppercase_start_value = 27
+        for i in range(unicode_A, unicode_Z + 1):
+            priority[chr(i)] = uppercase_start_value
+            uppercase_start_value += 1
+
+        return priority
+
+    def assign_priority(self, character: str) -> int:
+        """
+        Check the priority (score) of a given character.
+
+        :return: Integer value of the priority.
+        """
+
+        # parameter not length 1
+        if len(character) != 1:
+            raise TypeError(
+                f'assign_priority() expected a character, '
+                f'but string of length {len(character)} was found.')
+
+        # parameter not in dictionary
+        if self.priority_map().get(character) is None:
+            raise TypeError(
+                f'assign_priority() expected an alphabetical character, '
+                f'but character "{character}" was found.')
+
+        return self.priority_map().get(character)
+
+
+def main():
+    part_obj = Part1()
+    print(part_obj.assign_priority(''))
+
+
+if __name__ == '__main__':
+    main()

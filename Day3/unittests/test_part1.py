@@ -75,4 +75,48 @@ class TestCheckPockets(unittest.TestCase):
             {'B', 'A'}
         )
 
-    # def test_return_correct_order
+
+class TestAssignPriority(unittest.TestCase):
+    def test_return_list(self):
+        self.assertEqual(
+            type(Part1().assign_priority('a')),
+            int
+        )
+
+    def test_a_returns_one(self):
+        self.assertEqual(
+            Part1().assign_priority('a'),
+            1
+        )
+
+    def test_z_returns_26(self):
+        self.assertEqual(
+            Part1().assign_priority('z'),
+            26
+        )
+
+    def test_A_returns_27(self):
+        self.assertEqual(
+            Part1().assign_priority('A'),
+            27
+        )
+
+    def test_Z_returns_52(self):
+        self.assertEqual(
+            Part1().assign_priority('Z'),
+            52
+        )
+
+    def test_string_len_2_raises_TypeError(self):
+        self.assertRaises(
+            TypeError,
+            Part1().assign_priority,
+            'foo'
+        )
+
+    def test_numerical_value_raises_TypeError(self):
+        self.assertRaises(
+            TypeError,
+            Part1().assign_priority,
+            '0'
+        )
