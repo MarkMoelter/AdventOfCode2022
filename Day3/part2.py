@@ -11,7 +11,7 @@ class Part2(Part1):
     def split_into_groups(
             self,
             number_in_each_group: int = 3
-    ) -> dict[int: list[tuple[str, str]]]:
+    ) -> dict[int: list[str]]:
         """
         Split the list into groups of the parameter's size.
 
@@ -21,11 +21,22 @@ class Part2(Part1):
         """
         groups = {}
         group_id = 0
-        for i in range(0, len(self.split_rucksack()), number_in_each_group):
-            groups[group_id] = self.split_rucksack()[i:i+number_in_each_group]
+        for i in range(0, len(self.rucksack_list), number_in_each_group):
+            groups[group_id] = self.rucksack_list[i:i + number_in_each_group]
             group_id += 1
 
         return groups
+
+    @staticmethod
+    def get_duplicate(group: list[str]) -> str:
+        """
+        Check a group for the duplicate.
+
+        :return: The duplicate character.
+        """
+        ruck_1, ruck_2, ruck_3 = group
+
+        return list(set(ruck_1) & set(ruck_2) & set(ruck_3))[0]
 
 
 def main():
