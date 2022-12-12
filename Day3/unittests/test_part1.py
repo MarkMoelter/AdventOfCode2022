@@ -120,3 +120,33 @@ class TestAssignPriority(unittest.TestCase):
             Part1().assign_priority,
             '0'
         )
+
+
+class TestTotalScore(unittest.TestCase):
+    def setUp(self) -> None:
+        self.a_returns = ['ABCDEA', 'aLOa']
+        self.part1_a = Part1(self.a_returns)
+
+    def test_returns_int(self):
+        self.assertEqual(
+            type(self.part1_a.total_priority()),
+            int
+        )
+
+    def test_return_one(self):
+        self.assertEqual(
+            Part1(['abca']).total_priority(),
+            1
+        )
+
+    def test_return_27(self):
+        self.assertEqual(
+            Part1(['AbcA']).total_priority(),
+            27
+        )
+
+    def test_return_54(self):
+        self.assertEqual(
+            Part1(['AbcA', 'bAcftAiopl']).total_priority(),
+            54
+        )

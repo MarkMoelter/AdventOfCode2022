@@ -92,11 +92,27 @@ class Part1:
 
         return self.priority_map().get(character)
 
+    def total_priority(self) -> int:
+        """
+        Calculate the total priority value of all rucksacks in the input file.
+
+        :return: The total priority value as an integer.
+        """
+        score = 0
+
+        for pocket_1, pocket_2 in self.split_rucksack():
+            # collect the duplicate from each rucksack
+            duplicate = self.check_pockets(pocket_1, pocket_2)
+
+            # get the value of the duplicate and add it to the score
+            for dup in duplicate:
+                score += self.assign_priority(dup)
+
+        return score
 
 def main():
     part_obj = Part1()
-    print(part_obj.assign_priority(''))
-
+    print(part_obj.total_priority())
 
 if __name__ == '__main__':
     main()
