@@ -1,6 +1,6 @@
 import unittest
 
-from Day3.part2 import Part2
+from Day3 import Part2
 
 
 class TestSplitIntoGroups(unittest.TestCase):

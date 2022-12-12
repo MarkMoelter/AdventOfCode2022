@@ -1,6 +1,6 @@
 import unittest
 
-from Day3.part1 import Part1
+from Day3 import Part1
 
 
 class TestSplitRucksack(unittest.TestCase):
