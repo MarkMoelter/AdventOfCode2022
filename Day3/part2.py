@@ -38,10 +38,19 @@ class Part2(Part1):
 
         return list(set(ruck_1) & set(ruck_2) & set(ruck_3))[0]
 
+    def total_priority(self) -> int:
+
+        priority = 0
+
+        for group in self.split_into_groups().values():
+            priority += self.assign_priority(self.get_duplicate(group))
+
+        return priority
+
 
 def main():
     rucksacks = utils.read_input_file()
-    print(Part2(rucksacks).split_into_groups())
+    print(Part2(rucksacks).total_priority())
 
 
 if __name__ == '__main__':

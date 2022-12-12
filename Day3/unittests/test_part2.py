@@ -37,3 +37,10 @@ class TestGetDuplicate(unittest.TestCase):
             Part2().get_duplicate(self.basic_ruck),
             'a'
         )
+
+    def test_returns_A(self):
+        self.assertEqual(
+            Part2().get_duplicate(['ABa', 'HGA', 'POA']),
+            'A'
+        )
+
