@@ -1,7 +1,6 @@
 import unittest
 
-from Day2.part1 import Opponent
-from Day2.part2 import NeededOutcome, Part2
+from Day2 import NeededOutcome, Part2, Opponent
 
 
 class TestNeededSign(unittest.TestCase):
@@ -123,6 +122,7 @@ class TestInputScore(unittest.TestCase):
             Part2([(Opponent.SCISSORS, NeededOutcome.DRAW)]).input_score(),
             3
         )
+
 
 if __name__ == '__main__':
     unittest.main()

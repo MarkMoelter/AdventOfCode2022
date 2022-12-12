@@ -1,14 +1,7 @@
-from enum import Enum, auto
-
 import utils
 from Day2.opponent import Opponent
+from Day2.outcome import Outcome
 from Day2.player import Player
-
-
-class Outcome(Enum):
-    WIN = auto()
-    DRAW = auto()
-    LOSS = auto()
 
 
 class Part1:

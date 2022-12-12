@@ -1,6 +1,6 @@
 import unittest
 
-from Day2.part1 import Player
+from Day2 import Player
 
 
 class TestPlayer(unittest.TestCase):

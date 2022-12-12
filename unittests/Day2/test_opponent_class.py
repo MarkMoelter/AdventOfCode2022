@@ -1,6 +1,6 @@
 import unittest
 
-from Day2.part1 import Opponent
+from Day2 import Opponent
 
 
 class TestOpponent(unittest.TestCase):
