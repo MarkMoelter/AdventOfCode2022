@@ -1,9 +1,9 @@
 from Day2.needed_outcome import NeededOutcome
 from Day2.opponent import Opponent
-from Day2.part1 import Part1, separate_games
+from Day2.rock_paper_scissors import RPS, separate_games
 
 
-class Part2(Part1):
+class RPSTwist(RPS):
     def __init__(self, games):
         super().__init__(games)
         self.games = games
@@ -84,7 +84,7 @@ class Part2(Part1):
 
 def main():
     games = separate_games()
-    print(Part2(games).total_score())
+    print(RPSTwist(games).total_score())
 
 
 if __name__ == '__main__':

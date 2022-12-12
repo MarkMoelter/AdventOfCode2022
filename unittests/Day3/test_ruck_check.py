@@ -1,12 +1,12 @@
 import unittest
 
-from Day3 import Part1
+from Day3 import RucksackCheck
 
 
 class TestSplitRucksack(unittest.TestCase):
     def setUp(self) -> None:
         self.rucksacks = ['ABCD', 'EFGH', 'HIJK', 'LMNO']
-        self.p1 = Part1(self.rucksacks)
+        self.p1 = RucksackCheck(self.rucksacks)
 
     def test_return_list(self):
         self.assertEqual(
@@ -29,7 +29,7 @@ class TestSplitRucksack(unittest.TestCase):
             )
 
     def test_separate_in_half(self):
-        split_rucksacks = Part1(['ABCD', 'EFGH']).split_rucksack()
+        split_rucksacks = RucksackCheck(['ABCD', 'EFGH']).split_rucksack()
         pocket_1, pocket_2 = split_rucksacks[-1]
         self.assertEqual(
             len(pocket_1),
@@ -40,12 +40,12 @@ class TestSplitRucksack(unittest.TestCase):
 class TestCheckPockets(unittest.TestCase):
     def test_return_list(self):
         self.assertEqual(
-            type(Part1().check_pockets('', '')),
+            type(RucksackCheck().check_pockets('', '')),
             set
         )
 
     def test_values_in_list_return_string(self):
-        for ele in Part1().check_pockets('', ''):
+        for ele in RucksackCheck().check_pockets('', ''):
             self.assertEqual(
                 type(ele),
                 str
@@ -54,24 +54,24 @@ class TestCheckPockets(unittest.TestCase):
     def test_raise_value_error_when_not_same_length(self):
         self.assertRaises(
             ValueError,
-            Part1().check_pockets,
+            RucksackCheck().check_pockets,
             pocket_1='fo',
             pocket_2='bar'
         )
 
     def test_return_A(self):
         self.assertEqual(
-            Part1().check_pockets('AB', 'CA'),
+            RucksackCheck().check_pockets('AB', 'CA'),
             {'A'}
         )
 
     def test_return_A_and_B(self):
         self.assertEqual(
-            Part1().check_pockets('ABC', 'GBA'),
+            RucksackCheck().check_pockets('ABC', 'GBA'),
             {'A', 'B'}
         )
         self.assertEqual(
-            Part1().check_pockets('ABC', 'GBA'),
+            RucksackCheck().check_pockets('ABC', 'GBA'),
             {'B', 'A'}
         )
 
@@ -79,45 +79,45 @@ class TestCheckPockets(unittest.TestCase):
 class TestAssignPriority(unittest.TestCase):
     def test_return_list(self):
         self.assertEqual(
-            type(Part1().assign_priority('a')),
+            type(RucksackCheck().assign_priority('a')),
             int
         )
 
     def test_a_returns_one(self):
         self.assertEqual(
-            Part1().assign_priority('a'),
+            RucksackCheck().assign_priority('a'),
             1
         )
 
     def test_z_returns_26(self):
         self.assertEqual(
-            Part1().assign_priority('z'),
+            RucksackCheck().assign_priority('z'),
             26
         )
 
     def test_A_returns_27(self):
         self.assertEqual(
-            Part1().assign_priority('A'),
+            RucksackCheck().assign_priority('A'),
             27
         )
 
     def test_Z_returns_52(self):
         self.assertEqual(
-            Part1().assign_priority('Z'),
+            RucksackCheck().assign_priority('Z'),
             52
         )
 
     def test_string_len_2_raises_TypeError(self):
         self.assertRaises(
             TypeError,
-            Part1().assign_priority,
+            RucksackCheck().assign_priority,
             'foo'
         )
 
     def test_numerical_value_raises_TypeError(self):
         self.assertRaises(
             TypeError,
-            Part1().assign_priority,
+            RucksackCheck().assign_priority,
             '0'
         )
 
@@ -125,7 +125,7 @@ class TestAssignPriority(unittest.TestCase):
 class TestTotalScore(unittest.TestCase):
     def setUp(self) -> None:
         self.a_returns = ['ABCDEA', 'aLOa']
-        self.part1_a = Part1(self.a_returns)
+        self.part1_a = RucksackCheck(self.a_returns)
 
     def test_returns_int(self):
         self.assertEqual(
@@ -135,18 +135,18 @@ class TestTotalScore(unittest.TestCase):
 
     def test_return_one(self):
         self.assertEqual(
-            Part1(['abca']).total_priority(),
+            RucksackCheck(['abca']).total_priority(),
             1
         )
 
     def test_return_27(self):
         self.assertEqual(
-            Part1(['AbcA']).total_priority(),
+            RucksackCheck(['AbcA']).total_priority(),
             27
         )
 
     def test_return_54(self):
         self.assertEqual(
-            Part1(['AbcA', 'bAcftAiopl']).total_priority(),
+            RucksackCheck(['AbcA', 'bAcftAiopl']).total_priority(),
             54
         )

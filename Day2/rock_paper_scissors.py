@@ -4,7 +4,7 @@ from Day2.outcome import Outcome
 from Day2.player import Player
 
 
-class Part1:
+class RPS:
     def __init__(self, games: list[tuple[str, str]]):
         self.games = games
 
@@ -80,7 +80,7 @@ def separate_games() -> list[tuple[str, str]]:
 
 def main():
     games = separate_games()
-    print(Part1(games).total_score())
+    print(RPS(games).total_score())
 
 
 if __name__ == '__main__':

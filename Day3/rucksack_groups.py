@@ -1,9 +1,9 @@
 import utils
 
-from Day3.part1 import Part1
+from Day3.rucksack_check import RucksackCheck
 
 
-class Part2(Part1):
+class RucksackGroups(RucksackCheck):
     def __init__(self, rucksack_list: list[str] = None):
         super().__init__(rucksack_list)
         self.rucksack_list = rucksack_list
@@ -50,7 +50,7 @@ class Part2(Part1):
 
 def main():
     rucksacks = utils.read_input_file()
-    print(Part2(rucksacks).total_priority())
+    print(RucksackGroups(rucksacks).total_priority())
 
 
 if __name__ == '__main__':

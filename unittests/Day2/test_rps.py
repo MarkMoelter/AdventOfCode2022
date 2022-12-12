@@ -1,6 +1,6 @@
 import unittest
 
-from Day2 import Part1, Outcome
+from Day2 import RPS, Outcome
 
 
 class TestGameLogic(unittest.TestCase):
@@ -17,9 +17,9 @@ class TestGameLogic(unittest.TestCase):
             ('A', 'Y'), ('B', 'Z'), ('C', 'X')
         ]
 
-        self.part1_win = Part1(self.wins)
-        self.part1_draw = Part1(self.draws)
-        self.part1_loss = Part1(self.losses)
+        self.part1_win = RPS(self.wins)
+        self.part1_draw = RPS(self.draws)
+        self.part1_loss = RPS(self.losses)
 
     def test_returns_outcome_enum(self):
         for opponent, player in self.draws:
@@ -64,17 +64,17 @@ class TestInputScore(unittest.TestCase):
             ('A', 'Y'), ('B', 'Z'), ('C', 'X')
         ]
 
-        self.sol_win = Part1(self.wins)
-        self.sol_draw = Part1(self.draws)
-        self.sol_loss = Part1(self.losses)
+        self.sol_win = RPS(self.wins)
+        self.sol_draw = RPS(self.draws)
+        self.sol_loss = RPS(self.losses)
 
     def test_returns_int(self):
         self.assertEqual(type(self.sol_loss.input_score()), int)
 
     def test_returns_correct_score(self):
-        self.assertEqual(Part1([('A', 'X')]).input_score(), 1)
-        self.assertEqual(Part1([('A', 'Y')]).input_score(), 2)
-        self.assertEqual(Part1([('A', 'Z')]).input_score(), 3)
+        self.assertEqual(RPS([('A', 'X')]).input_score(), 1)
+        self.assertEqual(RPS([('A', 'Y')]).input_score(), 2)
+        self.assertEqual(RPS([('A', 'Z')]).input_score(), 3)
 
 
 class TestOutcomeScore(unittest.TestCase):
@@ -91,9 +91,9 @@ class TestOutcomeScore(unittest.TestCase):
             ('A', 'Y'), ('B', 'Z'), ('C', 'X')
         ]
 
-        self.sol_win = Part1(self.wins)
-        self.sol_draw = Part1(self.draws)
-        self.sol_loss = Part1(self.losses)
+        self.sol_win = RPS(self.wins)
+        self.sol_draw = RPS(self.draws)
+        self.sol_loss = RPS(self.losses)
 
     def test_returns_int(self):
         self.assertEqual(type(self.sol_loss.outcome_score()), int)
@@ -122,9 +122,9 @@ class TestTotalScore(unittest.TestCase):
             ('A', 'Y'), ('B', 'Z'), ('C', 'X')
         ]
 
-        self.sol_win = Part1(self.wins)
-        self.sol_draw = Part1(self.draws)
-        self.sol_loss = Part1(self.losses)
+        self.sol_win = RPS(self.wins)
+        self.sol_draw = RPS(self.draws)
+        self.sol_loss = RPS(self.losses)
 
     def test_returns_int(self):
         self.assertEqual(type(self.sol_loss.total_score()), int)

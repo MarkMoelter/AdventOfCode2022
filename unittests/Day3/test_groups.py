@@ -1,6 +1,6 @@
 import unittest
 
-from Day3 import Part2
+from Day3 import RucksackGroups
 
 
 class TestSplitIntoGroups(unittest.TestCase):
@@ -9,13 +9,13 @@ class TestSplitIntoGroups(unittest.TestCase):
 
     def test_returns_dict(self):
         self.assertEqual(
-            type(Part2(self.basic_ruck).split_into_groups()),
+            type(RucksackGroups(self.basic_ruck).split_into_groups()),
             dict
         )
 
     def test_return_right_vals(self):
         self.assertEqual(
-            Part2(self.basic_ruck).split_into_groups(),
+            RucksackGroups(self.basic_ruck).split_into_groups(),
             {0: ['abca', 'defd', 'ghig'],
              1: ['jklj', 'xyzx', 'qweq']
              }
@@ -28,19 +28,19 @@ class TestGetDuplicate(unittest.TestCase):
 
     def test_returns_string(self):
         self.assertEqual(
-            type(Part2().get_duplicate(self.basic_ruck)),
+            type(RucksackGroups().get_duplicate(self.basic_ruck)),
             str
         )
 
     def test_returns_a(self):
         self.assertEqual(
-            Part2().get_duplicate(self.basic_ruck),
+            RucksackGroups().get_duplicate(self.basic_ruck),
             'a'
         )
 
     def test_returns_A(self):
         self.assertEqual(
-            Part2().get_duplicate(['ABa', 'HGA', 'POA']),
+            RucksackGroups().get_duplicate(['ABa', 'HGA', 'POA']),
             'A'
         )
 
