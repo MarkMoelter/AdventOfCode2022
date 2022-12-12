@@ -9,22 +9,22 @@ class TestSplitRucksack(unittest.TestCase):
         self.p1 = RucksackCheck(self.rucksacks)
 
     def test_return_list(self):
-        self.assertEqual(
-            type(self.p1.split_rucksack()),
+        self.assertIsInstance(
+            self.p1.split_rucksack(),
             list
         )
 
     def test_return_list_of_tuple(self):
         for ele in self.p1.split_rucksack():
-            self.assertEqual(
-                type(ele),
+            self.assertIsInstance(
+                ele,
                 tuple
             )
 
     def test_return_list_of_tuple_of_two_string(self):
         for ele in self.p1.split_rucksack()[0]:
-            self.assertEqual(
-                type(ele),
+            self.assertIsInstance(
+                ele,
                 str
             )
 
@@ -39,15 +39,15 @@ class TestSplitRucksack(unittest.TestCase):
 
 class TestCheckPockets(unittest.TestCase):
     def test_return_list(self):
-        self.assertEqual(
-            type(RucksackCheck().check_pockets('', '')),
+        self.assertIsInstance(
+            RucksackCheck().check_pockets('', ''),
             set
         )
 
     def test_values_in_list_return_string(self):
         for ele in RucksackCheck().check_pockets('', ''):
-            self.assertEqual(
-                type(ele),
+            self.assertIsInstance(
+                ele,
                 str
             )
 
@@ -78,8 +78,8 @@ class TestCheckPockets(unittest.TestCase):
 
 class TestAssignPriority(unittest.TestCase):
     def test_return_list(self):
-        self.assertEqual(
-            type(RucksackCheck().assign_priority('a')),
+        self.assertIsInstance(
+            RucksackCheck().assign_priority('a'),
             int
         )
 
@@ -128,8 +128,8 @@ class TestTotalScore(unittest.TestCase):
         self.part1_a = RucksackCheck(self.a_returns)
 
     def test_returns_int(self):
-        self.assertEqual(
-            type(self.part1_a.total_priority()),
+        self.assertIsInstance(
+            self.part1_a.total_priority(),
             int
         )
 

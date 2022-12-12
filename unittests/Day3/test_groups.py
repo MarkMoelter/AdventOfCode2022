@@ -8,8 +8,8 @@ class TestSplitIntoGroups(unittest.TestCase):
         self.basic_ruck = ['abca', 'defd', 'ghig', 'jklj', 'xyzx', 'qweq']
 
     def test_returns_dict(self):
-        self.assertEqual(
-            type(RucksackGroups(self.basic_ruck).split_into_groups()),
+        self.assertIsInstance(
+            RucksackGroups(self.basic_ruck).split_into_groups(),
             dict
         )
 
@@ -27,8 +27,8 @@ class TestGetDuplicate(unittest.TestCase):
         self.basic_ruck = ['abc', 'defa', 'gahig']
 
     def test_returns_string(self):
-        self.assertEqual(
-            type(RucksackGroups().get_duplicate(self.basic_ruck)),
+        self.assertIsInstance(
+            RucksackGroups().get_duplicate(self.basic_ruck),
             str
         )
 
