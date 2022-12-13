@@ -1,12 +1,7 @@
-# TODO: Collect the input pairs
-# TODO: Convert ranges into sets
-# TODO: Check if range pairs are subsets
-# TODO: Count how many pairs one range fully contains the other
-
 import utils
 
 
-class CampCleanup:
+class TotalOverlap:
     def __init__(self, pairs: list[str] = None):
         self.pairs = pairs
 
@@ -34,20 +29,31 @@ class CampCleanup:
 
         return processed
 
-    def total_overlapping_pairs(self) -> int:
+    def overlap_score(self) -> int:
         """
         Count the number of overlapping pairs in the input list.
 
         :return: The number of pairs that overlap completely.
         """
 
-        return 0
+        score = 0
+
+        # iterate over the pairs from the processed list
+        for range_1, range_2 in self.process_input():
+
+            # check if either range is a subset of the other
+            if range_1.issubset(range_2) or range_2.issubset(range_1):
+                score += 1
+
+        return score
 
 
 def main():
     pairs = utils.read_input_file()
-    part_1 = CampCleanup(pairs)
-    print(part_1.process_input())
+    part_1 = TotalOverlap(pairs)
+    overlap_count = part_1.overlap_score()
+
+    print(overlap_count)
 
 
 if __name__ == '__main__':
