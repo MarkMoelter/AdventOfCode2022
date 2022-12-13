@@ -34,6 +34,15 @@ class CampCleanup:
 
         return processed
 
+    def total_overlapping_pairs(self) -> int:
+        """
+        Count the number of overlapping pairs in the input list.
+
+        :return: The number of pairs that overlap completely.
+        """
+
+        return 0
+
 
 def main():
     pairs = utils.read_input_file()
