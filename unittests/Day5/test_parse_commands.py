@@ -6,24 +6,28 @@ from Day5.main import parse_commands
 
 class TestParseCommands(unittest.TestCase):
     def setUp(self) -> None:
-        self.no_vals = parse_commands([''])
+        input_ = ['asdak ', 'move 1 from 3 to 5', ' ']
+        self.basic = parse_commands(input_)
 
     def test_returns_list(self):
         self.assertIsInstance(
-            self.no_vals,
-            list
+            self.basic,
+            list,
+            'Should be list'
         )
 
     def test_returns_command_objects(self):
         self.assertIsInstance(
-            self.no_vals[0],
-            Command
+            self.basic[0],
+            Command,
+            'Should be a Command object'
         )
 
     def test_returns_command_1_3_5(self):
         self.assertEqual(
-            parse_commands(['move 1 from 3 to 5']),
-            Command(1, 3, 5)
+            self.basic,
+            [Command(1, 3, 5)],
+            'Should have values 1, 3, and 5'
         )
 
 
