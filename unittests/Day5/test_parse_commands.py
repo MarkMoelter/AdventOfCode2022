@@ -1,13 +1,12 @@
 import unittest
 
-from Day5.command import Command
-from Day5.main import parse_commands
+from Day5 import Command, ParseInput
 
 
 class TestParseCommands(unittest.TestCase):
     def setUp(self) -> None:
         input_ = ['asdak ', 'move 1 from 3 to 5', ' ']
-        self.basic = parse_commands(input_)
+        self.basic = ParseInput(input_).parse_commands()
 
     def test_returns_list(self):
         self.assertIsInstance(

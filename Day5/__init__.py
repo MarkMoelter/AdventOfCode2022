@@ -1,4 +1,2 @@
-from .block import Block
-from .column import Column
-from .command import Command
-from .mover import Mover
+from .Part1 import *
+from .Part2 import *

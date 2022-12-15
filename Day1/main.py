@@ -1,5 +1,6 @@
 import utils
 
+# TODO: Refactor this into OOP instead of functions. Write unit tests.
 
 def individual_elves() -> dict[int: int]:
     """
