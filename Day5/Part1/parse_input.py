@@ -66,29 +66,24 @@ class ParseInput:
         :return: A dictionary mapping the column integer
         to the blocks in that column.
         """
+        # {1: [], 2: [], ..., 9: []}
         col_dict = {i: [] for i in range(1, 10)}
-        col_list: list[list[str]] = []
 
-        # loop through lines
-        for i, row in enumerate(self.input_list):
-            important_indices = list(range(1, len(row), 4))
-
-            # remove lines that are not important
-            if i + 1 >= 9:
+        # loop through input rows
+        for idx, row in enumerate(self.input_list):
+            # ignore rows that are not important
+            if idx + 1 >= 9:
                 continue
 
-            # convert str to single character list and remove newlines
-            row = list(row.strip('\n'))
+            stripped_row = row.strip('\n')
 
-            # loop through characters in each line
-            current = []
-            for j, char in enumerate(row):
+            # 1, 5, 9, ..., len(row); n = (n-1) + 4
+            important_indices = range(1, len(stripped_row), 4)
 
-                # add characters that we care about
-                if j in important_indices:
-                    current.append(char)
+            # collect the relevant characters using a range
+            for reg_idx, important_idx in enumerate(important_indices):
 
-            for j, char in enumerate(current):
-                col_dict[j + 1].append(char)
+                # append the char at the important index to the list
+                col_dict[reg_idx + 1].append(stripped_row[important_idx])
 
         return col_dict
