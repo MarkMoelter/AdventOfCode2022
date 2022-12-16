@@ -1,4 +1,6 @@
+from .block import Block
 from .command import Command
+
 
 class ParseInput:
     def __init__(self, input_list: list[str]):
@@ -55,5 +57,38 @@ class ParseInput:
 
         return commands
 
-    def parse_initial_stack(self):
-        pass
+    def column_setup(self) -> dict[int: list[Block]]:
+        """
+        The structure from the first 10 input lines.
+        Represented as lists for each column.
+        End of each list is the bottom of each column.
+
+        :return: A dictionary mapping the column integer
+        to the blocks in that column.
+        """
+        col_dict = {i: [] for i in range(1, 10)}
+        col_list: list[list[str]] = []
+
+        # loop through lines
+        for i, row in enumerate(self.input_list):
+            important_indices = list(range(1, len(row), 4))
+
+            # remove lines that are not important
+            if i + 1 >= 9:
+                continue
+
+            # convert str to single character list and remove newlines
+            row = list(row.strip('\n'))
+
+            # loop through characters in each line
+            current = []
+            for j, char in enumerate(row):
+
+                # add characters that we care about
+                if j in important_indices:
+                    current.append(char)
+
+            for j, char in enumerate(current):
+                col_dict[j + 1].append(char)
+
+        return col_dict

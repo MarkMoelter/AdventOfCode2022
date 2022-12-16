@@ -3,8 +3,11 @@ from Day5 import ParseInput, Part2
 
 
 def main():
+    input_ = utils.read_input_file()
+
     # part 1
-    print(ParseInput(utils.read_input_file()).parse_commands())
+    print(ParseInput(input_).column_setup())
+    # print(ParseInput(input_).parse_commands())
 
     # part 2
     print(Part2())

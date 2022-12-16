@@ -5,4 +5,4 @@ def read_input_file(filename='input.txt') -> list[str]:
     :return: A list containing the lines of the file as the elements.
     """
     with open(filename, 'r') as f:
-        return [ele.strip() for ele in f.readlines()]
+        return [ele for ele in f.readlines()]

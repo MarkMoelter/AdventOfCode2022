@@ -29,6 +29,19 @@ class TestParseCommands(unittest.TestCase):
             'Should have values 1, 3, and 5'
         )
 
+class TestColumnSetup(unittest.TestCase):
+    def setUp(self) -> None:
+        input_ = ['asdak ', 'move 1 from 3 to 5', ' ']
+        self.basic = ParseInput(input_).column_setup()
+
+
+def test_returns_dict(self):
+        self.assertIsInstance(
+            self.basic,
+            dict,
+            'Should return a dict'
+        )
+
 
 if __name__ == '__main__':
     unittest.main()
