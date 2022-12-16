@@ -1,6 +1,5 @@
 import utils
-from Part1 import ParseInput
-from Part2 import Part2
+from Day5 import ParseInput, Part2
 
 
 def main():
