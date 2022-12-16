@@ -1,6 +1,3 @@
-import utils
-
-
 class RucksackCheck:
     def __init__(self, rucksack_list: list[str] = None):
         self.rucksack_list = rucksack_list
@@ -112,10 +109,3 @@ class RucksackCheck:
                 score += self.assign_priority(dup)
 
         return score
-
-def main():
-    part_obj = RucksackCheck(utils.read_input_file())
-    print(part_obj.total_priority())
-
-if __name__ == '__main__':
-    main()

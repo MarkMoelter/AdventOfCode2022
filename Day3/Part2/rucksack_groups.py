@@ -1,6 +1,4 @@
-import utils
-
-from Day3.rucksack_check import RucksackCheck
+from Day3 import RucksackCheck
 
 
 class RucksackGroups(RucksackCheck):
@@ -46,12 +44,3 @@ class RucksackGroups(RucksackCheck):
             priority += self.assign_priority(self.get_duplicate(group))
 
         return priority
-
-
-def main():
-    rucksacks = utils.read_input_file()
-    print(RucksackGroups(rucksacks).total_priority())
-
-
-if __name__ == '__main__':
-    main()

@@ -1,2 +1,2 @@
-from .rucksack_check import RucksackCheck
-from .rucksack_groups import RucksackGroups
+from .Part1 import *
+from .Part2 import *
