@@ -11,6 +11,8 @@ class RucksackCheck:
         rucksack_pockets = []
 
         for rucksack in self.rucksack_list:
+            rucksack = rucksack.strip()
+
             # calculate the length of each rucksack
             pocket_len = len(rucksack) // 2
 

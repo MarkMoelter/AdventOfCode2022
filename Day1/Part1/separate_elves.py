@@ -13,6 +13,8 @@ def separate_elves() -> dict[int: int]:
 
     for item in utils.read_input_file():
 
+        item = item.strip()
+
         # append item to list if item is not a blank string
         if item != '':
             current_elf.append(int(item))

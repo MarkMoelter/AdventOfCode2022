@@ -15,6 +15,8 @@ class TotalOverlap:
         processed = []
 
         for pair in self.pairs:
+            pair = pair.strip()
+
             # split into ranges
             current = []
             for range_ in pair.split(','):

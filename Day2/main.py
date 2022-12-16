@@ -6,6 +6,7 @@ def separate_games() -> list[tuple[str, str]]:
     games = []
 
     for line in utils.read_input_file():
+        line = line.strip()
         opponent_input, player_input = line.split(' ')
         games.append((opponent_input, player_input))
 
