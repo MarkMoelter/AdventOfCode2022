@@ -1,2 +1,2 @@
-from .partial_overlap import PartialOverlap
-from .total_overlap import TotalOverlap
+from .Part1 import *
+from.Part2 import *

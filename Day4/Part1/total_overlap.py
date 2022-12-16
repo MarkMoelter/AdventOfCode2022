@@ -46,15 +46,3 @@ class TotalOverlap:
                 score += 1
 
         return score
-
-
-def main():
-    pairs = utils.read_input_file()
-    part_1 = TotalOverlap(pairs)
-    overlap_count = part_1.overlap_score()
-
-    print(overlap_count)
-
-
-if __name__ == '__main__':
-    main()
