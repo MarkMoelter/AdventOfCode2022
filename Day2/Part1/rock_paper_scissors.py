@@ -1,7 +1,6 @@
-import utils
-from Day2.opponent import Opponent
-from Day2.outcome import Outcome
-from Day2.player import Player
+from .opponent import Opponent
+from .outcome import Outcome
+from .player import Player
 
 
 class RPS:
@@ -66,22 +65,3 @@ class RPS:
 
     def total_score(self) -> int:
         return self.input_score() + self.outcome_score()
-
-
-def separate_games() -> list[tuple[str, str]]:
-    games = []
-
-    for line in utils.read_input_file():
-        opponent_input, player_input = line.split(' ')
-        games.append((opponent_input, player_input))
-
-    return games
-
-
-def main():
-    games = separate_games()
-    print(RPS(games).total_score())
-
-
-if __name__ == '__main__':
-    main()

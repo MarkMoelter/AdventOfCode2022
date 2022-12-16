@@ -1,5 +1,4 @@
-from .Part1 import elf_with_most_calories
-from .Part2 import top_elves
+from Day1 import elf_with_most_calories, top_elves
 
 
 def main():

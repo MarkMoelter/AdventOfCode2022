@@ -1,6 +1,5 @@
-from Day2.needed_outcome import NeededOutcome
-from Day2.opponent import Opponent
-from Day2.rock_paper_scissors import RPS, separate_games
+from Day2 import Opponent, RPS
+from .needed_outcome import NeededOutcome
 
 
 class RPSTwist(RPS):
@@ -16,7 +15,7 @@ class RPSTwist(RPS):
 
         :return: A string representation of rock, paper, or scissors.
         """
-        outcome_dict ={
+        outcome_dict = {
             NeededOutcome.WIN: {
                 Opponent.ROCK: 'paper',
                 Opponent.PAPER: 'scissors',
@@ -37,7 +36,6 @@ class RPSTwist(RPS):
         }
 
         return outcome_dict[outcome][opponent]
-
 
     def outcome_score(self) -> int:
         """
@@ -80,12 +78,3 @@ class RPSTwist(RPS):
             score += input_score[player_sign]
 
         return score
-
-
-def main():
-    games = separate_games()
-    print(RPSTwist(games).total_score())
-
-
-if __name__ == '__main__':
-    main()
