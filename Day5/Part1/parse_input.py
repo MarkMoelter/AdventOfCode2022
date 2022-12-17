@@ -1,4 +1,3 @@
-from .block import Block
 from .command import Command
 
 
@@ -57,7 +56,7 @@ class ParseInput:
 
         return commands
 
-    def column_setup(self) -> dict[int: list[Block]]:
+    def column_setup(self) -> dict[int: list[str]]:
         """
         The structure from the first 10 input lines.
         Represented as lists for each column.
