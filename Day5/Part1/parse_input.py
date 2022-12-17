@@ -68,6 +68,11 @@ class ParseInput:
         to the blocks in that column.
         """
 
+        # TODO: create method to search for the numbers at the bottom of each column,
+        #  collect the indices for them and use to gather the column values.
+        #  Should be a similar method, just need to find the indices of the numbers.
+        #  Use this to gather the number of columns too.
+
         col_dict = self._filter_input(col_num=9)
 
         # reverse list and remove all space characters
