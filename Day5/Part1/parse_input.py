@@ -1,4 +1,3 @@
-from .block import Block
 from .command import Command
 
 
@@ -57,7 +56,7 @@ class ParseInput:
 
         return commands
 
-    def column_setup(self) -> dict[int: list[Block]]:
+    def column_setup(self) -> dict[int: list[str]]:
         """
         The structure from the first 10 input lines.
         Represented as lists for each column.
@@ -82,7 +81,6 @@ class ParseInput:
 
             # collect the relevant characters using a range
             for reg_idx, important_idx in enumerate(important_indices):
-
                 # append the char at the important index to the list
                 col_dict[reg_idx + 1].append(stripped_row[important_idx])
 
