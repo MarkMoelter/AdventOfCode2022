@@ -60,13 +60,33 @@ class ParseInput:
         """
         The structure from the first 10 input lines.
         Represented as lists for each column.
-        End of each list is the bottom of each column.
+        The beginning of each list is the bottom of each column.
+        The input image can be visualized as rotating the
+        dictionary 90 degrees counterclockwise.
 
         :return: A dictionary mapping the column integer
         to the blocks in that column.
         """
-        # {1: [], 2: [], ..., 9: []}
-        col_dict = {i: [] for i in range(1, 10)}
+
+        col_dict = self._filter_input(col_num=9)
+
+        # reverse list and remove all space characters
+        for key, list_ in col_dict.items():
+            list_.reverse()
+            col_dict[key] = [ele for ele in list_ if ele != ' ']
+
+        return col_dict
+
+    def _filter_input(self, col_num: int, ) -> dict:
+        """
+        Lift most of the weight for column_setup method. Create the dictionary,
+        loop though the lines of the input and
+
+        :param col_num: The number of columns in the input diagram.
+        :return: The dictionary
+        """
+        # initialize dictionary {1: [], 2: [], ...}
+        col_dict = {i: [] for i in range(1, col_num + 1)}
 
         # loop through input rows
         for idx, row in enumerate(self.input_list):
