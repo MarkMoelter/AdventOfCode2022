@@ -40,7 +40,8 @@ class TestColumnSetup(unittest.TestCase):
             '[W]     [L] [D] [D] [J] [W] [T] [C]',
             '[N] [T] [R] [T] [T] [T] [M] [M] [G]',
             '[J] [S] [Q] [S] [Z] [W] [P] [G] [D]',
-            '[Z] [G] [V] [V] [Q] [M] [L] [N] [R]'
+            '[Z] [G] [V] [V] [Q] [M] [L] [N] [R]',
+            ' 1   2   3   4   5   6   7   8   9 '
         ]
         self.basic = ParseInput(input_).column_setup()
 
@@ -48,7 +49,7 @@ class TestColumnSetup(unittest.TestCase):
         self.assertIsInstance(
             self.basic,
             dict,
-            'Should return a dict'
+            'Should be a dict'
         )
 
     def test_list_is_not_blank(self):

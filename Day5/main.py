@@ -10,13 +10,16 @@ def main():
     parse = ParseInput(input_)
     yard = ShippingYard(parse.column_setup())
 
+    # starting image
+    pprint(parse.column_setup())
+
     # part 1
-    #   move crates according to commands
+    # move crates according to commands
     for cmd in parse.parse_commands():
         yard.move_crates(cmd)
 
+    # final image
     pprint(yard.get_yard())
-    # print(ParseInput(input_).parse_commands())
 
     # part 2
     print(Part2())
