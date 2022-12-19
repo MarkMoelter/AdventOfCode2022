@@ -1,13 +1,21 @@
-import utils
-from Day5 import ParseInput, Part2
 from pprint import pprint
+
+import utils
+from Day5 import ParseInput, Part2, ShippingYard
 
 
 def main():
     input_ = utils.read_input_file()
 
+    parse = ParseInput(input_)
+    yard = ShippingYard(parse.column_setup())
+
     # part 1
-    pprint(ParseInput(input_).column_setup())
+    #   move crates according to commands
+    for cmd in parse.parse_commands():
+        yard.move_crates(cmd)
+
+    pprint(yard.get_yard())
     # print(ParseInput(input_).parse_commands())
 
     # part 2
