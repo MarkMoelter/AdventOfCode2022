@@ -23,8 +23,21 @@ def part_1():
 
 
 def part_2():
-    print(Part2())
+    logging.info('Starting part 2')
+    input_ = utils.read_input_file()
 
+    parse = ParseInput(input_)
+    yard = ShippingYard(parse.column_setup())
+
+    # move crates according to commands
+    for i, cmd in enumerate(parse.parse_commands()):
+        logging.debug(cmd)
+        yard.move_crates(cmd, keep_crate_order=True)
+
+    # final image
+    print(''.join(yard.last_in_each_column()))
+
+    logging.info('Finishing part 2')
 
 def main():
     logging.basicConfig(level=logging.INFO)

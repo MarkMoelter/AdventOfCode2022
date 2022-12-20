@@ -11,14 +11,15 @@ class ShippingYard:
         """Return the columns object as a dictionary."""
         return self.columns
 
-    def move_crates(self, cmd: Command) -> None:
+    def move_crates(self, cmd: Command, keep_crate_order: bool = False) -> None:
         """Move blocks between columns. Alter the state of the columns."""
         # the column to change
         init_column = self.columns[cmd.init_col]
 
         # use list slicing to separate the crates into two lists
         crates_to_move = init_column[-cmd.num_crates:]
-        crates_to_move.reverse()
+        if not keep_crate_order:
+            crates_to_move.reverse()
         updated_column = init_column[:-cmd.num_crates]
 
         # add the crates to the destination column
