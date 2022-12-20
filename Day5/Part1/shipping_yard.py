@@ -18,6 +18,7 @@ class ShippingYard:
 
         # use list slicing to separate the crates into two lists
         crates_to_move = init_column[-cmd.num_crates:]
+        crates_to_move.reverse()
         updated_column = init_column[:-cmd.num_crates]
 
         # add the crates to the destination column

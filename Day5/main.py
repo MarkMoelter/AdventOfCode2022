@@ -11,10 +11,9 @@ def part_1():
     parse = ParseInput(input_)
     yard = ShippingYard(parse.column_setup())
 
-    # part 1
     # move crates according to commands
     for i, cmd in enumerate(parse.parse_commands()):
-        logging.debug(i)
+        logging.debug(cmd)
         yard.move_crates(cmd)
 
     # final image
@@ -23,13 +22,15 @@ def part_1():
     logging.info('Finishing part 1')
 
 
+def part_2():
+    print(Part2())
+
+
 def main():
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.INFO)
 
     part_1()
-
-    # part 2
-    print(Part2())
+    part_2()
 
 
 if __name__ == '__main__':
