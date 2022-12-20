@@ -1,6 +1,6 @@
 import unittest
 
-from Day5 import Command, ShippingYard
+from Days.Day5 import Command, ShippingYard
 
 
 class TestMoveCrates(unittest.TestCase):

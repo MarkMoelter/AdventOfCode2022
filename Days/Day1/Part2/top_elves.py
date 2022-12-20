@@ -1,4 +1,4 @@
-from Day1.Part1 import separate_elves
+from Days.Day1.Part1 import separate_elves
 
 
 def top_elves(top_number: int) -> list[int]:

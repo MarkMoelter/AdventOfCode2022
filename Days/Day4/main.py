@@ -1,5 +1,5 @@
 import utils
-from Day4 import PartialOverlap, TotalOverlap
+from Days.Day4 import PartialOverlap, TotalOverlap
 
 
 def main():

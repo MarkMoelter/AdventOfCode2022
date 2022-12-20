@@ -1,6 +1,6 @@
 import unittest
 
-from Day3 import RucksackGroups
+from Days.Day3 import RucksackGroups
 
 
 class TestSplitIntoGroups(unittest.TestCase):

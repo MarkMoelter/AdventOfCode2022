@@ -1,4 +1,4 @@
-from Day1 import elf_with_most_calories, top_elves
+from Days.Day1 import elf_with_most_calories, top_elves
 
 
 def main():
