@@ -1,6 +1,3 @@
-import logging
-
-
 def sliding_window(input_string: str, window_size: int = 4) -> int:
     """
     Check where the input string has unique characters.
@@ -12,17 +9,23 @@ def sliding_window(input_string: str, window_size: int = 4) -> int:
     characters equal to the window size.
     """
 
-    # initialize the window pointers
-    left = 0
-    right = left + window_size - 1
+    # catch case input shorter than window size
+    if len(input_string) < window_size:
+        raise ValueError(
+            f'Provided string must be longer than window size {window_size}.'
+        )
 
-    while True:
-        if is_unique(input_string[left:right]):
+    for i in range(len(input_string) - window_size + 1):
+        left = i
+        right = window_size + i
+
+        if is_unique(*input_string[left:right]):
             return right
-        else:
-            left += 1
-            right += 1
 
+    raise ValueError(
+        'The input string does not contain unique characters'
+        ' with the chosen window size.'
+    )
 
 
 def is_unique(*characters: str) -> bool:

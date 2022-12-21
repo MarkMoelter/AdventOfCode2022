@@ -45,15 +45,23 @@ class TestSlidingWindow(unittest.TestCase):
         self.assertEqual(
             sliding_window('abcd'),
             3,
-            'Should be 3'
+            '"abcd" should be 3'
         )
 
     def test_returns_4(self):
         self.assertEqual(
             sliding_window('aabcd'),
             4,
-            'Should be 4'
+            '"aabcd" should be 4'
         )
+
+    def test_string_not_unique(self):
+        with self.assertRaises(ValueError):
+            sliding_window('aaaa')
+
+    def test_string_shorter_than_window(self):
+        with self.assertRaises(ValueError):
+            sliding_window('')
 
 
 if __name__ == '__main__':
