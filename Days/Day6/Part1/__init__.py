@@ -1,1 +1,1 @@
-from .window import sliding_window, is_unique
+from .window import first_unique_characters, is_unique

@@ -1,6 +1,6 @@
 import unittest
 
-from Days.Day6 import is_unique, sliding_window
+from Days.Day6 import is_unique, first_unique_characters
 
 
 class TestIsUnique(unittest.TestCase):
@@ -37,31 +37,31 @@ class TestIsUnique(unittest.TestCase):
 class TestSlidingWindow(unittest.TestCase):
     def test_returns_int(self):
         self.assertIsInstance(
-            sliding_window('abcd'),
+            first_unique_characters('abcd'),
             int
-        )
-
-    def test_returns_3(self):
-        self.assertEqual(
-            sliding_window('abcd'),
-            3,
-            '"abcd" should be 3'
         )
 
     def test_returns_4(self):
         self.assertEqual(
-            sliding_window('aabcd'),
+            first_unique_characters('abcd'),
             4,
-            '"aabcd" should be 4'
+            '"abcd" should be 4'
+        )
+
+    def test_returns_5(self):
+        self.assertEqual(
+            first_unique_characters('aabcd'),
+            5,
+            '"aabcd" should be 5'
         )
 
     def test_string_not_unique(self):
         with self.assertRaises(ValueError):
-            sliding_window('aaaa')
+            first_unique_characters('aaaa')
 
     def test_string_shorter_than_window(self):
         with self.assertRaises(ValueError):
-            sliding_window('')
+            first_unique_characters('')
 
 
 if __name__ == '__main__':
