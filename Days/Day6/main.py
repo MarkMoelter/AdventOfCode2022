@@ -11,7 +11,9 @@ def part_1():
     print(first_unique_characters(input_))
 
 def part_2():
-    input_ = utils.read_input_file()
+    input_ = utils.read_input_file()[0]
+
+    print(first_unique_characters(input_, 14))
 
 
 def main():
