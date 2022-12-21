@@ -1,7 +1,7 @@
 import logging
 
 
-def window_func(input_string: str, window_size: int = 4) -> int:
+def sliding_window(input_string: str, window_size: int = 4) -> int:
     """
     Check where the input string has unique characters.
 
@@ -11,6 +11,19 @@ def window_func(input_string: str, window_size: int = 4) -> int:
     :return: The index of the input string where the input string has unique
     characters equal to the window size.
     """
+
+    # initialize the window pointers
+    left = 0
+    right = left + window_size - 1
+
+    while True:
+        if is_unique(input_string[left:right]):
+            return right
+        else:
+            left += 1
+            right += 1
+
+
 
 def is_unique(*characters: str) -> bool:
     """

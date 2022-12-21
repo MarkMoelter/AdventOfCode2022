@@ -1,1 +1,1 @@
-from .window import window_func, is_unique
+from .window import sliding_window, is_unique
