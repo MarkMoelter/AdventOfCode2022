@@ -3,7 +3,7 @@ import re
 
 def is_command(potential_command: str) -> bool:
     """Check if a string is considered a command"""
-    regex_cmd = r'^\$\s..(\s[a-zA-Z\./]*)?$'
+    regex_cmd = r'^\$\s[cdls]{2}(\s[a-zA-Z/\.]*)?$'
     return bool(re.search(regex_cmd, potential_command))
 
 
