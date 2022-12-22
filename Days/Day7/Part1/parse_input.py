@@ -14,7 +14,8 @@ def is_file(potential_file: str) -> bool:
 
 def is_directory(potential_directory: str) -> bool:
     """Check if a string is considered a directory."""
-    return potential_directory.startswith('dir')
+    regex_dir = r'^dir\s[a-zA-Z/]+$'
+    return bool(re.search(regex_dir, potential_directory))
 
 
 def file_structure(data_stream: list[str]) -> dict[str, list]:
