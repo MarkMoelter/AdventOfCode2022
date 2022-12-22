@@ -19,7 +19,33 @@ def is_directory(potential_directory: str) -> bool:
     return bool(re.search(regex_dir, potential_directory))
 
 
-def file_structure(data_stream: list[str]) -> dict[str, list]:
+class ParseInput:
+    def __init__(self, data_stream: list[str]):
+        self.data_stream = data_stream
+
+        self.dirs = self._parse_directories()
+
+    def _parse_directories(self) -> dict[str, list]:
+        """
+        Create a dictionary mapping the directories to empty lists.
+        Does not map directories to other directories or files yet.
+
+        :return: A dictionary containing all the directories and empty lists
+        """
+        directories = {}
+
+        for line in self.data_stream:
+            if not is_directory(line):
+                continue
+
+            dir_name = re.search(r'[a-zA-Z/]+$', line)[0]
+            directories[dir_name] = []
+
+        return directories
+
+
+# TODO: restructure this to be in the class instead of standalone.
+def create_file_structure(data_stream: list[str]) -> dict[str, list]:
     main_dir = '/'
     directories = {main_dir: []}
 

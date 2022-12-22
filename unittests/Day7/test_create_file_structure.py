@@ -1,6 +1,6 @@
 import unittest
 
-from Days.Day7 import is_command, is_directory, is_file
+from Days.Day7 import ParseInput, is_command, is_directory, is_file
 
 
 class TestIsCommand(unittest.TestCase):
@@ -146,6 +146,16 @@ class TestIsFile(unittest.TestCase):
         self.assertTrue(
             is_file(filename),
             f'"{filename}" is a valid file size'
+        )
+
+
+class TestParseDirectories(unittest.TestCase):
+    def test_returns_dict(self):
+        parser = ParseInput([''])
+
+        self.assertIsInstance(
+            parser.dirs,
+            dict
         )
 
 
