@@ -9,7 +9,8 @@ def is_command(potential_command: str) -> bool:
 
 def is_file(potential_file: str) -> bool:
     """Check if a string is considered a file."""
-    return potential_file[0].isdigit()
+    regex_file = r'^[0]*[1-9]+\d*\s[a-zA-Z]+(\.[a-zA-Z]{3})?$'
+    return bool(re.search(regex_file, potential_file))
 
 
 def is_directory(potential_directory: str) -> bool:
