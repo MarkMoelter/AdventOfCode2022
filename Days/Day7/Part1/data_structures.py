@@ -10,4 +10,3 @@ class File:
 @dataclass
 class Directory:
     name: str
-
