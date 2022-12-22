@@ -1,16 +1,40 @@
-from .data_structures import Directory, File
-
-class ParseInput:
-    def __init__(self, data_stream: list[str]) -> None:
-        self.data_stream = data_stream
-
-    def directories(self) -> dict[Directory, list[Directory]]:
-        """Parse the data stream into a dictionary
-        that maps directories to subdirectories."""
-        pass
+def is_command(str_: str) -> bool:
+    """Check if a string is considered a command"""
+    return str_.startswith('$')
 
 
-    def files(self) -> dict[File, Directory]:
-        """Parse the data stream into a dictionary
-        that maps a file to its directory."""
-        pass
+def is_file(str_: str) -> bool:
+    """Check if a string is considered a file."""
+    return str_[0].isdigit()
+
+
+def is_directory(str_: str) -> bool:
+    """Check if a string is considered a directory."""
+    return str_.startswith('dir')
+
+
+def file_structure(data_stream: list[str]) -> dict[str, list]:
+    main_dir = '/'
+    directories = {main_dir: []}
+
+    # initialize the dictionary with the directories
+    for line in data_stream:
+        if is_directory(line):
+            dir_name: str = line.split()[1]
+
+            directories[dir_name] = []
+
+    # current_directory = main_dir
+    #
+    # for line in data_stream:
+    #     if is_directory(line):
+    #         pass
+    #
+    #     elif is_file(line):
+    #         size, name = line.split(' ')
+    #
+    #         directories['/'].append(File(name, size))
+    #     elif is_command(line):
+    #         pass
+
+    return directories
