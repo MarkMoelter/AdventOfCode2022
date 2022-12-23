@@ -32,5 +32,8 @@ def create_file_system(data_stream: list[str]) -> File:
         # change working directory
         if line.startswith('$ cd '):
             working_directory = root.change_working_directory(line[5:])
-
+        elif line.startswith('$ ls'):
+            continue
+        else:
+            working_directory.add_file(line)
     return root
