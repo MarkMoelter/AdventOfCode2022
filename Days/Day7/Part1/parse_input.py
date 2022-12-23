@@ -1,4 +1,5 @@
 import re
+
 from .data_structures import File, Directory
 
 
@@ -29,6 +30,19 @@ def is_directory(potential_directory: str) -> bool:
     return bool(re.search(regex_dir, potential_directory))
 
 
+def get_dir_name(directory_command: str) -> str:
+    """Get the directory name from the given command."""
+
+    # TODO: handle 'x' and '..'
+    pot_dir = directory_command.split(' ')[-1]
+
+    result = re.search(r'[a-zA-Z/]+$', pot_dir)
+    if result:
+        return result[0]
+
+    raise ValueError(f'The directory command, {directory_command} does not have a valid directory name')
+
+
 class ParseInput:
     def __init__(self, data_stream: list[str]):
         self.data_stream = data_stream
@@ -48,7 +62,7 @@ class ParseInput:
             if not is_directory(line):
                 continue
 
-            dir_name = re.search(r'[a-zA-Z/]+$', line)[0]
+            dir_name = get_dir_name(line)
             directories[dir_name] = Directory(dir_name)
 
         return directories
@@ -61,37 +75,14 @@ class ParseInput:
             # change directory
             if is_command(line):
                 command = line.split(' ')
-                if command[1] == 'cd':
-                    current_dir = command[2]
+                cd_cmd = command[1] == 'cd'
+                x = command[2] == 'x'
+                dotdot = command[2] == '..'
+
+                if cd_cmd and not x and not dotdot:
+                    current_dir = get_dir_name(line)
 
             # add files to directory
             elif is_file(line):
                 size, filename = line.split(' ')
-                self.dirs[current_dir].append(File(filename, size))
-
-
-
-# TODO: restructure this to be in the class instead of standalone.
-def create_file_structure(data_stream: list[str]) -> dict[str, list]:
-    main_dir = '/'
-    directories = {main_dir: []}
-
-    # initialize the dictionary with all directories in the input
-    for line in data_stream:
-        if is_directory(line):
-            dir_name: str = line.split()[1]
-
-            directories[dir_name] = []
-
-    current_directory = main_dir
-    for line in data_stream:
-        if is_command(line):
-            cmd = line.split(line)
-
-            if cmd[1] == 'cd':
-
-                # changing current directory
-                if cmd[2].isalpha() or cmd[2] == '/':
-                    current_directory = cmd[2]
-
-    return directories
+                self.dirs[current_dir].files.append(File(filename, size))

@@ -1,6 +1,6 @@
 import unittest
 
-from Days.Day7 import ParseInput, is_command, is_directory, is_file
+from Days.Day7 import ParseInput, is_command, is_directory, is_file, Directory
 
 
 class TestIsCommand(unittest.TestCase):
@@ -156,6 +156,30 @@ class TestParseDirectories(unittest.TestCase):
         self.assertIsInstance(
             parser.dirs,
             dict
+        )
+
+    def test_does_not_add_invalid_dir(self):
+        parser = ParseInput(['dir 3'])
+
+        self.assertEqual(
+            parser.dirs,
+            {}
+        )
+
+    def test_valid_dir(self):
+        parser = ParseInput(['dir a'])
+
+        self.assertEqual(
+            parser.dirs,
+            {'a': Directory('a')}
+        )
+
+    def test_dir_name_x(self):
+        parser = ParseInput(['dir x'])
+
+        self.assertEqual(
+            parser.dirs,
+            {}
         )
 
 
