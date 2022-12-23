@@ -4,7 +4,14 @@ from dataclasses import dataclass, field
 @dataclass
 class File:
     name: str
-    size: int
+    size: int = 0
+    contents: list = field(default_factory=list)
+
+    def add_file(self):
+        """Add a file to the contents field."""
+
+    def change_working_directory(self, new_directory: str):
+        """Change the working directory."""
 
 
 @dataclass

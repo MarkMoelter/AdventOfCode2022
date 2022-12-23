@@ -1,6 +1,6 @@
 import unittest
 
-from Days.Day7 import ParseInput, is_command, is_directory, is_file, Directory
+from Days.Day7 import is_command, is_file
 
 
 class TestIsCommand(unittest.TestCase):
@@ -44,44 +44,6 @@ class TestIsCommand(unittest.TestCase):
         self.assertFalse(
             is_command('$ abcd'),
             '"$ abcd" is not a command'
-        )
-
-
-class TestIsDirectory(unittest.TestCase):
-    def test_returns_bool(self):
-        self.assertIsInstance(
-            is_directory(''),
-            bool
-        )
-
-    def test_dir_valid(self):
-        dir_name = 'a'
-
-        self.assertTrue(
-            is_directory(f'dir {dir_name}'),
-            f'"{dir_name}" is a valid directory'
-        )
-
-    def test_invalid_dir(self):
-        dir_name = '0'
-
-        self.assertFalse(
-            is_directory(f'dir {dir_name}'),
-            f'"{dir_name}" is not a valid directory'
-        )
-
-    def test_space_in_dir_name(self):
-        dir_name = 'a b'
-
-        self.assertFalse(
-            is_directory(f'dir {dir_name}'),
-            f'"{dir_name}" is not a valid directory'
-        )
-
-    def test_main_dir(self):
-        self.assertTrue(
-            is_directory('dir /'),
-            '"/" is a valid directory'
         )
 
 
@@ -146,40 +108,6 @@ class TestIsFile(unittest.TestCase):
         self.assertTrue(
             is_file(filename),
             f'"{filename}" is a valid file size'
-        )
-
-
-class TestParseDirectories(unittest.TestCase):
-    def test_returns_dict(self):
-        parser = ParseInput([''])
-
-        self.assertIsInstance(
-            parser.dirs,
-            dict
-        )
-
-    def test_does_not_add_invalid_dir(self):
-        parser = ParseInput(['dir 3'])
-
-        self.assertEqual(
-            parser.dirs,
-            {}
-        )
-
-    def test_valid_dir(self):
-        parser = ParseInput(['dir a'])
-
-        self.assertEqual(
-            parser.dirs,
-            {'a': Directory('a')}
-        )
-
-    def test_dir_name_x(self):
-        parser = ParseInput(['dir x'])
-
-        self.assertEqual(
-            parser.dirs,
-            {}
         )
 
 
