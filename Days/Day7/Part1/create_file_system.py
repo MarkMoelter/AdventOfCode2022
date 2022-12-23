@@ -1,4 +1,4 @@
-from .data_structures import File
+from .file import File
 
 
 def create_file_system(data_stream: list[str]) -> File:
