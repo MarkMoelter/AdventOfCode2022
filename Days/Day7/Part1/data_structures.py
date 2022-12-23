@@ -6,25 +6,17 @@ class File:
     name: str
     size: int = 0
     contents: list = field(default_factory=list)
+    directory: bool = True
 
-    def add_file(self):
+    def add_file(self, file_to_add) -> None:
         """Add a file to the contents field."""
 
     def change_working_directory(self, new_directory: str):
-        """Change the working directory."""
+        """Change the working directory and return a file object."""
 
+    def find_folders(self, max_size: int) -> list:
+        """Find all the folders in the file system with size <= max_size."""
 
-@dataclass
-class Directory:
-    name: str
-    files: list[File] = field(default_factory=list)
-    sub_directories: list = field(default_factory=list)
-
-    def file_size(self) -> int:
-        """
-        Return the size of the files in the directory.
-        Does not include subdirectories.
-
-        :return: The total in bytes of all files in the directory.
-        """
-        return sum([file.size for file in self.files])
+    def calc_size(self) -> int:
+        """Calculate the size of the folders and files in the current folder."""
+        return sum([file.size for file in self.contents])
