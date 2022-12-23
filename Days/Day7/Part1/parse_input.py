@@ -1,4 +1,5 @@
 import re
+from .data_structures import File, Directory
 
 
 def is_command(potential_command: str) -> bool:
@@ -31,12 +32,12 @@ def is_directory(potential_directory: str) -> bool:
 class ParseInput:
     def __init__(self, data_stream: list[str]):
         self.data_stream = data_stream
-
         self.dirs = self._parse_directories()
 
-    def _parse_directories(self) -> dict[str, list]:
+    def _parse_directories(self) -> dict[str, Directory]:
         """
         Create a dictionary mapping the directories to empty lists.
+
         Does not map directories to other directories or files yet.
 
         :return: A dictionary containing all the directories and empty lists
@@ -48,9 +49,26 @@ class ParseInput:
                 continue
 
             dir_name = re.search(r'[a-zA-Z/]+$', line)[0]
-            directories[dir_name] = []
+            directories[dir_name] = Directory(dir_name)
 
         return directories
+
+    def parse_files(self) -> None:
+        """Add files to the appropriate directories."""
+        current_dir = '/'
+
+        for line in self.data_stream:
+            # change directory
+            if is_command(line):
+                command = line.split(' ')
+                if command[1] == 'cd':
+                    current_dir = command[2]
+
+            # add files to directory
+            elif is_file(line):
+                size, filename = line.split(' ')
+                self.dirs[current_dir].append(File(filename, size))
+
 
 
 # TODO: restructure this to be in the class instead of standalone.
