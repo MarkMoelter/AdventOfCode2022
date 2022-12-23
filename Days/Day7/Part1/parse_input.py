@@ -12,7 +12,7 @@ def is_command(potential_command: str) -> bool:
     :param potential_command: The string to check.
     :return: True if the string is a command, False otherwise.
     """
-    regex_cmd = r'^\$\s(cd | ls)(\s[a-zA-Z/\.]*)?$'
+    regex_cmd = r'^\$\s(cd|ls)(\s[a-zA-Z/\.]*)?$'
     return bool(re.search(regex_cmd, potential_command))
 
 
