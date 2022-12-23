@@ -1,30 +1,22 @@
 import logging
-import re
 from dataclasses import dataclass, field
-
-
-def is_file(potential_file: str) -> bool:
-    """Check if a string is considered a file."""
-    regex_file = r'^[0]*[1-9]+\d*\s[a-zA-Z]+(\.[a-zA-Z]{3})?$'
-    return bool(re.search(regex_file, potential_file))
 
 
 @dataclass
 class File:
     name: str
     size: int = 0
-    contents: list = field(default_factory=list)
     directory: bool = True
+    contents: list = field(default_factory=list) if directory else None
 
-    def add_file(self, file_to_add: str):
+    def add_file(self, file: str):
         """Add a file to the contents field."""
-        if is_file(file_to_add):
-            size, name = file_to_add.split()
-            self.contents.append(file_factory(name, size))
+        size, name = file.split(' ')
+        self.contents.append(file_factory(name, int(size)))
 
-            logging.info(
-                f'File "{name}", {size} bytes added to Directory "{File.name}"'
-            )
+        logging.info(
+            f'File "{name}", {size} bytes added to Directory "{self.name}"'
+        )
 
     def change_working_directory(self, new_directory: str):
         """Change the working directory and return a file object."""

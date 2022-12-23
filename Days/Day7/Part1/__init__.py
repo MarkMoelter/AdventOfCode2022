@@ -1,2 +1,2 @@
-from .create_file_system import create_file_system
-from .file import File, is_file
+from .create_file_system import create_file_system, is_file
+from .file import File
