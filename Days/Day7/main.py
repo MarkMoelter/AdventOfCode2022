@@ -1,11 +1,13 @@
 import utils
-from Days.Day7 import ParseInput
+from Days.Day7 import create_file_system
 
 
 def part_1():
     """Add up the file sizes with directories less than 10000 bytes."""
     input_ = utils.read_input_file('test_input.txt')
-    print(ParseInput(input_).dirs)
+    root = create_file_system(input_)
+    delete_me = root.find_folders(100_000)
+    print(f'The size to delete: {sum([file.calc_size() for file in delete_me])}')
 
 
 def part_2():
