@@ -1,3 +1,5 @@
+import logging
+
 import utils
 from Days.Day7 import create_file_system
 
@@ -15,6 +17,8 @@ def part_2():
 
 
 def main():
+    logging.basicConfig(level=logging.DEBUG)
+
     part_1()
     part_2()
 
