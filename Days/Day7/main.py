@@ -1,11 +1,11 @@
 import utils
-from Days.Day7 import create_file_structure
+from Days.Day7 import ParseInput
 
 
 def part_1():
     """Add up the file sizes with directories less than 10000 bytes."""
-    input_ = utils.read_input_file()
-    print(create_file_structure(input_))
+    input_ = utils.read_input_file('test_input.txt')
+    print(ParseInput(input_).dirs)
 
 
 def part_2():

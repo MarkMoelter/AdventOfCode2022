@@ -48,7 +48,7 @@ class ParseInput:
         self.data_stream = data_stream
         self.dirs = self._parse_directories()
 
-    def _parse_directories(self) -> dict[str, Directory]:
+    def _parse_directories(self) -> list[Directory]:
         """
         Create a dictionary mapping the directories to empty lists.
 
@@ -56,14 +56,14 @@ class ParseInput:
 
         :return: A dictionary containing all the directories and empty lists
         """
-        directories = {}
+        directories = [Directory('/')]
 
         for line in self.data_stream:
             if not is_directory(line):
                 continue
 
             dir_name = get_dir_name(line)
-            directories[dir_name] = Directory(dir_name)
+            directories.append(Directory(dir_name))
 
         return directories
 
