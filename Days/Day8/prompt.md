@@ -26,5 +26,3 @@ In the bottom row, the middle 5 is visible, but the 3 and 4 are not.
 With 16 trees visible on the edge and another 5 visible in the interior, a total of 21 trees are visible in this arrangement.
 
 Consider your map; how many trees are visible from outside the grid?
-
-To begin, get your puzzle input.
