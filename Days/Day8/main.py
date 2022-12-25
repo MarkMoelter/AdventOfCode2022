@@ -1,7 +1,6 @@
 import logging
 
 import utils
-
 from Days.Day8 import Visibility
 
 
@@ -10,7 +9,6 @@ def part_1():
     forest = utils.read_input_file('test_input.txt')
     vis = Visibility(forest)
     print(vis.count_visible_trees())
-
 
 
 def part_2():

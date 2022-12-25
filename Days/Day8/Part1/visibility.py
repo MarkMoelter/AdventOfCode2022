@@ -15,8 +15,17 @@ class Visibility:
         """Count the number of trees visible from the outside of the forest."""
         total = 0
         # iterate though all trees in the forest
-        for tree_row in self.forest:
-            for tree in tree_row:
+        for idx, tree_row in enumerate(self.forest):
+            for j_idx, tree in enumerate(tree_row):
+
+                # return true if the index is 0 or the last index in the list.
+                find_edges = lambda index, list_: index == 0 or index == (len(list_) - 1)
+
+                # check for perimeter trees
+                top_and_bottom = find_edges(idx, self.forest)
+                left_and_right = find_edges(j_idx, tree_row)
+                if top_and_bottom or left_and_right:
+                    total += 1
                 # check for visibility
                 if self.is_visible(tree):
                     total += 1
