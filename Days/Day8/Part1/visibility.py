@@ -18,7 +18,7 @@ class Visibility:
                 perimeter = top_and_bottom or left_and_right
 
                 # check for row and column visibility
-                find_rows_or_col = lambda index, list_: False
+                find_rows_or_col = lambda index, list_: False  # fixme: not functional
                 row_visibility = find_rows_or_col(idx, self.forest)
                 col_visibility = find_rows_or_col(j_idx, tree_row)
                 row_and_column = row_visibility or col_visibility
