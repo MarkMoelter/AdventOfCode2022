@@ -2,15 +2,6 @@ class Visibility:
     def __init__(self, forest: list[str]):
         self.forest = forest
 
-    def is_visible(self, tree: str) -> bool:
-        """Check if a tree is visible from the outside of the forest."""
-
-    def horizontal(self):
-        """Check for visibility horizontally in the forest."""
-
-    def vertical(self):
-        """Check for visibility vertically in the forest."""
-
     def count_visible_trees(self) -> int:
         """Count the number of trees visible from the outside of the forest."""
         total = 0
@@ -24,9 +15,16 @@ class Visibility:
                 # check for perimeter trees
                 top_and_bottom = find_edges(idx, self.forest)
                 left_and_right = find_edges(j_idx, tree_row)
-                if top_and_bottom or left_and_right:
+                perimeter = top_and_bottom or left_and_right
+
+                # check for row and column visibility
+                find_rows_or_col = lambda index, list_: False
+                row_visibility = find_rows_or_col(idx, self.forest)
+                col_visibility = find_rows_or_col(j_idx, tree_row)
+                row_and_column = row_visibility or col_visibility
+
+                is_visible = perimeter or row_and_column
+                if is_visible:
                     total += 1
-                # check for visibility
-                if self.is_visible(tree):
-                    total += 1
+
         return total
