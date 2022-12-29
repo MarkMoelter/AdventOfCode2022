@@ -1,6 +1,3 @@
-import utils
-
-
 class TotalOverlap:
     def __init__(self, pairs: list[str] = None):
         self.pairs = pairs

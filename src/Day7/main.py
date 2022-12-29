@@ -1,7 +1,8 @@
 import logging
 
-import utils
 from Days.Day7 import create_file_system
+
+import utils
 
 
 def part_1():

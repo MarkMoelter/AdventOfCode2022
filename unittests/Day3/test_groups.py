@@ -1,6 +1,6 @@
 import unittest
 
-from Days.Day3 import RucksackGroups
+from src.Day3 import RucksackGroups
 
 
 class TestSplitIntoGroups(unittest.TestCase):
@@ -43,4 +43,3 @@ class TestGetDuplicate(unittest.TestCase):
             RucksackGroups().get_duplicate(['ABa', 'HGA', 'POA']),
             'A'
         )
-

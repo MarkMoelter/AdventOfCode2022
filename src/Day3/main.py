@@ -1,5 +1,5 @@
 import utils
-from Days.Day3 import RucksackCheck, RucksackGroups
+from src.Day3 import RucksackCheck, RucksackGroups
 
 
 def main():

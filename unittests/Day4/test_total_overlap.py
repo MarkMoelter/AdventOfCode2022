@@ -1,6 +1,6 @@
 import unittest
 
-from Days.Day4 import TotalOverlap
+from src.Day4 import TotalOverlap
 
 
 class TestProcessInput(unittest.TestCase):

@@ -1,5 +1,6 @@
-import utils
 from Days.Day4 import TotalOverlap
+
+import utils
 
 
 class PartialOverlap(TotalOverlap):

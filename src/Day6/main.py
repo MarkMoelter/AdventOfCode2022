@@ -1,7 +1,7 @@
 import logging
 
 import utils
-from Days.Day6 import first_unique_characters
+from src.Day6 import first_unique_characters
 
 
 def part_1():
@@ -9,6 +9,7 @@ def part_1():
     input_: str = utils.read_input_file()[0]
 
     print(first_unique_characters(input_))
+
 
 def part_2():
     input_ = utils.read_input_file()[0]

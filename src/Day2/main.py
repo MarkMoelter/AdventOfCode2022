@@ -1,5 +1,5 @@
 import utils
-from Days.Day2 import RPS, RPSTwist
+from src.Day2 import RPS, RPSTwist
 
 
 def separate_games() -> list[tuple[str, str]]:

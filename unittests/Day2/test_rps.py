@@ -1,6 +1,6 @@
 import unittest
 
-from Days.Day2 import RPS, Outcome
+from src.Day2 import RPS, Outcome
 
 
 class TestGameLogic(unittest.TestCase):

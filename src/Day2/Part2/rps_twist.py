@@ -1,4 +1,4 @@
-from Days.Day2 import Opponent, RPS
+from src.Day2 import Opponent, RPS
 from .needed_outcome import NeededOutcome
 
 

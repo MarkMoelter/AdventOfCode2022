@@ -1,7 +1,8 @@
 import logging
 
-import utils
 from Days.Day5 import ParseInput, ShippingYard
+
+import utils
 
 
 def part_1():
@@ -38,6 +39,7 @@ def part_2():
     print(''.join(yard.last_in_each_column()))
 
     logging.info('Finishing part 2')
+
 
 def main():
     logging.basicConfig(level=logging.INFO)
