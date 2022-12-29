@@ -1,4 +1,4 @@
-from Days.Day3 import RucksackCheck
+from src.Day3 import RucksackCheck
 
 
 class RucksackGroups(RucksackCheck):

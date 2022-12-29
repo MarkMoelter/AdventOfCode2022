@@ -1,8 +1,7 @@
 import logging
 
-from Days.Day7 import create_file_system
-
 import utils
+from src.Day7 import create_file_system
 
 
 def part_1():

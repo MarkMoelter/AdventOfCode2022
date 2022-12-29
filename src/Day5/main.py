@@ -1,8 +1,7 @@
 import logging
 
-from Days.Day5 import ParseInput, ShippingYard
-
 import utils
+from src.Day5 import ParseInput, ShippingYard
 
 
 def part_1():
