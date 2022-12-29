@@ -1,6 +1,6 @@
 import unittest
 
-from Days.Day5 import Command, ParseInput
+from src.Day5 import Command, ParseInput
 
 
 class TestParseCommands(unittest.TestCase):

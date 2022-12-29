@@ -1,6 +1,6 @@
 import unittest
 
-from src import is_unique, first_unique_characters
+from src.Day6 import is_unique, first_unique_characters
 
 
 class TestIsUnique(unittest.TestCase):

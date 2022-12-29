@@ -1,6 +1,6 @@
 import unittest
 
-from Days.Day2 import NeededOutcome, RPSTwist, Opponent
+from src.Day2 import NeededOutcome, RPSTwist, Opponent
 
 
 class TestNeededSign(unittest.TestCase):

@@ -1,6 +1,6 @@
 import unittest
 
-from Days.Day4 import PartialOverlap
+from src.Day4 import PartialOverlap
 
 
 class TestOverlapScore(unittest.TestCase):
