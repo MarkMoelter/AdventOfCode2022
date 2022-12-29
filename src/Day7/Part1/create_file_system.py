@@ -1,22 +1,23 @@
-import re
-
-from .file import File
-
-
-def is_file(potential_file: str) -> bool:
-    """Check if a string is considered a file."""
-    regex_file = r'^[0]*[1-9]+\d*\s[a-zA-Z]+(\.[a-zA-Z]{3})?$'
-    return bool(re.search(regex_file, potential_file))
-
-
-def create_file_system(data_stream: list[str]) -> File:
+def create_file_system(data_stream: list[str]) -> tuple[dict, list]:
     """Create the file system from the commands given."""
-    root = File('/')
-    working_directory = root
+    dirs = {}
+    path = []
     for line in data_stream:
-        # change working directory
-        if line.startswith('$ cd '):
-            working_directory = root.change_working_directory(line[5:])
-        elif is_file(line):
-            working_directory.add_file(line)
-    return root
+        cmd_mode = line.startswith('$')
+        if cmd_mode:
+            if line.startswith('$ cd '):
+                directory = line.split(' ')[2]
+                if directory == '..':
+                    path.pop()
+                else:
+                    path.append(directory)
+        else:
+            cwd = '-'.join(path)
+            files = dirs.get(cwd, [])
+            atom = line.split()
+            if atom[0] == 'dir':
+                atom[1] = f'{cwd}-{atom[1]}'
+            files.append(atom)
+            dirs[cwd] = files
+
+    return dirs, path
