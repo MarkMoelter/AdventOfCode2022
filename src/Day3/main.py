@@ -1,4 +1,4 @@
-import utils
+from src import utils
 from src.Day3 import RucksackCheck, RucksackGroups
 
 

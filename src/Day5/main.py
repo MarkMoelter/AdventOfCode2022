@@ -1,6 +1,6 @@
 import logging
 
-import utils
+from src import utils
 from src.Day5 import ParseInput, ShippingYard
 
 

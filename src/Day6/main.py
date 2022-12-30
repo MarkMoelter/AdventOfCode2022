@@ -1,6 +1,6 @@
 import logging
 
-import utils
+from src import utils
 from src.Day6 import first_unique_characters
 
 

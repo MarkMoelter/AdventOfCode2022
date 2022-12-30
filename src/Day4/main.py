@@ -1,4 +1,4 @@
-import utils
+from src import utils
 from src.Day4 import PartialOverlap, TotalOverlap
 
 
