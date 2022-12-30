@@ -9,12 +9,26 @@ class Visibility:
         for idx, tree_row in enumerate(self.forest):
             for j_idx, tree in enumerate(tree_row):
 
-                # return true if the index is 0 or the last index in the list.
-                find_edges = lambda index, list_: index == 0 or index == (len(list_) - 1)
+                def is_vert_edge() -> bool:
+                    return j_idx == 0
 
+                def is_hori_edge() -> bool:
+                    return idx == (len(self.forest) - 1)
+
+
+                def is_edge(index, list_):
+                    return index == 0 or index == (len(list_) - 1)
+
+                def is_visible_in_row(index, list_):
+                    return False
+
+                def is_visible_in_col(index, list_):
+                    return False
+
+                # remove below this ##################
                 # check for perimeter trees
-                top_and_bottom = find_edges(idx, self.forest)
-                left_and_right = find_edges(j_idx, tree_row)
+                top_and_bottom = is_edge(idx, self.forest)
+                left_and_right = is_edge(j_idx, tree_row)
                 perimeter = top_and_bottom or left_and_right
 
                 # check for row and column visibility
@@ -24,6 +38,9 @@ class Visibility:
                 row_and_column = row_visibility or col_visibility
 
                 is_visible = perimeter or row_and_column
+
+
+                # remove above ##########
                 if is_visible:
                     total += 1
 
