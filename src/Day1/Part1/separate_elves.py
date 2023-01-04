@@ -1,4 +1,4 @@
-import utils
+from src import utils
 
 
 def separate_elves() -> dict[int: int]:
